@@ -4,9 +4,9 @@ package org.eaticious.eaternity;
 import java.io.Serializable;
 
 
-public interface RecipeComment extends Serializable, Cloneable{
+public interface SavingPotential extends Serializable, Cloneable{
 
-	public String getComment();
+	public String getPotential();
 	
 	public Double getNumber();
 }

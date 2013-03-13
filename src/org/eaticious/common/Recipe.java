@@ -1,8 +1,10 @@
-package org.eaticious.eaternity;
+package org.eaticious.common;
 
+import java.net.URL;
 import java.util.List;
 import java.util.Locale;
 import org.eaticious.common.*;
+import org.eaticious.eaternity.SavingPotential;
 import org.eaticious.greenlicious.Appliance;
 import org.eaticious.greenlicious.Ingredient;
 
@@ -58,16 +60,23 @@ public interface Recipe {
 	 */
 	public Integer getRating();
 	
+	public List<String> getComments();
 	
-	// eaternity specific
-	public List<RecipeComment> getComments();
+	public List<SavingPotential> getSavingPotentials();
 	
 	public Long getAncestorId();
 	
-	public boolean isOpen();
+	public boolean isPublished();
 	
 	public boolean isDeleted();
 	
 	public Long getUserID();
+	
+	public String getAuthor();
+	
+	 /** 
+	 * @return The URL for the Image of this Recipe or null if not available
+	 */
+	public URL getImagePath();
 
 }

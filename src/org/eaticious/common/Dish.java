@@ -1,9 +1,11 @@
-package org.eaticious.eaternity;
+package org.eaticious.common;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import org.eaticious.eaternity.EmissionFactor;
+import org.eaticious.eaternity.IngredientSpecification;
 import org.eaticious.greenlicious.Recipe;
 
 public interface Dish extends Serializable {
