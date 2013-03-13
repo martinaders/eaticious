@@ -1,6 +1,6 @@
 package org.eaticious.greenlicious;
 
-public enum ApplianceType {
+public enum DeviceType {
 	
 	STOVETOP_ELECTRIC, STOVETOP_CERAMIC, STOVETOP_INDUCTION, STOVETOP_GAS,
 	
