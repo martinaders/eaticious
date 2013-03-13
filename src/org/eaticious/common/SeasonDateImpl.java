@@ -28,10 +28,16 @@ public class SeasonDateImpl implements SeasonDate {
 	public SeasonDateImpl(Date date) {
 		setDate(date);
 	}
+	
+	public SeasonDateImpl(SeasonDate toClone) {
+		month = toClone.getMonth();
+		day = toClone.getDay();
+	}
 
 	/*
 	 * Format: dd.MM
 	 */
+	@Override
 	public boolean setDate(String date) {
 		String splitted[] = date.trim().split("\\.");
 		if(splitted.length == 2) {
@@ -47,6 +53,7 @@ public class SeasonDateImpl implements SeasonDate {
 		else return false;
 	}
 
+	@Override
 	public boolean setDate(Date date) {
 		if (date != null) {
 			String strDate = date.getDay() + "." + date.getMonth();
@@ -55,15 +62,11 @@ public class SeasonDateImpl implements SeasonDate {
 		else return false;
 	}
 
-	public SeasonDateImpl(SeasonDate toClone) {
-		month = toClone.getMonth();
-		day = toClone.getDay();
-	}
-
 
 	/*
 	 * if the dates are same, after returns true as well (still in season)
 	 */
+	@Override
 	public boolean after(SeasonDate other){
 		if (this.month > other.getMonth()) {
 			return true;
@@ -76,6 +79,7 @@ public class SeasonDateImpl implements SeasonDate {
 		return false;
 	}
 
+	@Override
 	public boolean before(SeasonDate other) {
 		if (this.month < other.getMonth()) {
 			return true;

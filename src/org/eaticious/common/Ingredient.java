@@ -1,11 +1,12 @@
 package org.eaticious.common;
 
+import java.io.Serializable;
 import java.util.Map;
 
 import org.eaticious.greenlicious.Nutrient;
 import org.eaticious.greenlicious.Quantity;
 
-public interface Ingredient {
+public interface Ingredient extends Serializable {
 	
 	/**
 	 * 

@@ -1,5 +1,6 @@
 package org.eaticious.common;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -9,7 +10,7 @@ import org.eaticious.greenlicious.Region;
 import org.eaticious.greenlicious.Season;
 
 
-public interface FoodProduct {
+public interface FoodProduct extends Serializable {
 
 	public String getName(Locale locale);
 	

@@ -1,8 +1,9 @@
 package org.eaticious.common;
 
+import java.io.Serializable;
 import java.util.Locale;
 
-public interface Nutrient {
+public interface Nutrient extends Serializable {
 	
 	public String getName();
 	

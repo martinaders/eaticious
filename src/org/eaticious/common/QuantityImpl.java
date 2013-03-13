@@ -2,6 +2,8 @@ package org.eaticious.common;
 
 public class QuantityImpl implements Quantity {
 	
+	private static final long serialVersionUID = -2234968030318875678L;
+	
 	private Unit unit;
 	private Double amount;
 	

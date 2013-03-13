@@ -2,7 +2,7 @@ package org.eaticious.common;
 
 import java.io.Serializable;
 
-public interface Quantity extends Serializable, Cloneable {
+public interface Quantity extends Serializable {
 	
 	/**
 	 * 

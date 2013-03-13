@@ -2,7 +2,7 @@ package org.eaticious.common;
 
 import java.io.Serializable;
 
-public interface Season extends Serializable, Cloneable {
+public interface Season extends Serializable {
 	
 	public SeasonDate getStart();
 	

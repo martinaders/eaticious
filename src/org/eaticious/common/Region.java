@@ -3,9 +3,8 @@ package org.eaticious.common;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
-public interface Region extends Serializable, Cloneable {
+public interface Region extends Serializable {
 	
 	public String getFCLCode();
 	
