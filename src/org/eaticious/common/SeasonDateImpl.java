@@ -9,6 +9,9 @@ import java.util.Date;
  * 
  */
 public class SeasonDateImpl implements SeasonDate {
+	
+	private static final long serialVersionUID = -2858234034518875678L;
+	
 	public int month;
 	public int day;
 
