@@ -1,16 +1,23 @@
 package org.eaticious.eaternity;
 
+import java.util.Locale;
+
 import org.eaticious.greenlicious.EnergySource;
 
 public interface Device {
 
-	public String getName();
+	/**
+	 * 
+	 * @param language
+	 * @return name of the device in the locale language
+	 */
+	public String getName(Locale locale);
 	
 	/**
 	 * 
 	 * @return The subtype of the device, e.g. small or big Microwave
 	 */
-	public String getSpecification();
+	public String getSpecification(Locale locale);
 	
 	/**
 	 * 
