@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+import org.eaticious.common.User;
+
 public interface Shoppinglist extends Serializable, Cloneable {
 	
 	public Map<Product, Quantity> getEntries();

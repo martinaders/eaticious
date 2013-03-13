@@ -3,10 +3,6 @@ package org.eaticious.common;
 import java.net.URL;
 import java.util.List;
 import java.util.Locale;
-import org.eaticious.common.*;
-import org.eaticious.eaternity.SavingPotential;
-import org.eaticious.greenlicious.Appliance;
-import org.eaticious.greenlicious.Ingredient;
 
 import java.util.Map;
 

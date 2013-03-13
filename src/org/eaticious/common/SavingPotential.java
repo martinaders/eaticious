@@ -1,4 +1,4 @@
-package org.eaticious.eaternity;
+package org.eaticious.common;
 
 
 import java.io.Serializable;
