@@ -1,7 +1,0 @@
-package org.eaticious.greenlicious;
-
-public enum LifecycleProcess {
-	
-	PRODUCTION, DRYING, CANNING, FREEZING, INDUSTRIAL_TRANSPORT, INDUSTRIAL_COOLING, PRIVATE_TRANSPORT, PRIVATE_COOLING, COOKING
-
-}
