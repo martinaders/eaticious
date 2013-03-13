@@ -4,11 +4,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import org.eaticious.common.*;
-import org.eaticious.greenlicious.Nutrient;
-import org.eaticious.greenlicious.ProductClassification;
-import org.eaticious.greenlicious.ProductProducer;
-import org.eaticious.greenlicious.Quantity;
-import org.eaticious.greenlicious.Region;
+
 
 public interface Ingredient {
 
