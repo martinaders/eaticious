@@ -3,6 +3,8 @@ package org.eaticious.greenlicious;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eaticious.common.Unit;
+
 public class CO2ePrintImpl extends ArrayList<CO2eSample> implements CO2ePrint {
 	
 	private Unit unit;

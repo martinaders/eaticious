@@ -1,5 +1,9 @@
 package org.eaticious.greenlicious;
 
+import org.eaticious.common.Quantity;
+import org.eaticious.common.QuantityImpl;
+import org.eaticious.common.Unit;
+
 /**
  * @deprecated Needs to be changed...
  * @author Sven Peetz

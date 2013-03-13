@@ -1,28 +1,30 @@
 package org.eaticious.greenlicious;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+import org.eaticious.common.Dish;
+import org.eaticious.common.FoodProduct;
+import org.eaticious.common.Quantity;
 import org.eaticious.common.User;
 
-public interface Shoppinglist extends Serializable, Cloneable {
+public interface Shoppinglist {
 	
-	public Map<Product, Quantity> getEntries();
+	public Map<FoodProduct, Quantity> getEntries();
 	
-	public List<Meal> getMeals();
+	public List<Dish> getMeals();
 	
-	public void addMeal(Meal meal);
+	public void addMeal(Dish meal);
 	
-	public void removeMeal(Meal meal);
+	public void removeMeal(Dish meal);
 	
-	public String getShoppingInfo(Product product);
+	public String getShoppingInfo(FoodProduct product);
 	
 	public boolean getStatus();
 	
-	public Boolean getStatus(Product product);
+	public Boolean getStatus(FoodProduct product);
 	
-	public void setStatus (Product product);
+	public void setStatus (FoodProduct product);
 	
 	public User getUser();
 	

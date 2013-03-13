@@ -1,5 +1,7 @@
 package org.eaticious.greenlicious;
 
+import org.eaticious.common.Unit;
+
 
 public class CO2eSampleImpl implements CO2eSample {
 	

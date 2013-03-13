@@ -3,6 +3,8 @@ package org.eaticious.greenlicious;
 import java.io.Serializable;
 import java.util.List;
 
+import org.eaticious.common.Unit;
+
 public interface CO2ePrint extends Serializable, Cloneable{
 	
 	/**

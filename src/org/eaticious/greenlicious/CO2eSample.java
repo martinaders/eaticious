@@ -1,8 +1,8 @@
 package org.eaticious.greenlicious;
 
-import java.io.Serializable;
+import org.eaticious.common.Unit;
 
-public interface CO2eSample extends Serializable, Cloneable{
+public interface CO2eSample{
 	
 	/**
 	 * 
