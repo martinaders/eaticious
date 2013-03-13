@@ -3,11 +3,8 @@ package org.eaticious.greenlicious;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.googlecode.objectify.annotation.Serialize;
-
 public class CO2ePrintImpl extends ArrayList<CO2eSample> implements CO2ePrint {
 	
-	@Serialize
 	private Unit unit;
 	
 	public CO2ePrintImpl(Unit unit){
