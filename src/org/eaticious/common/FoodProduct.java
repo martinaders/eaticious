@@ -5,9 +5,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import org.eaticious.common.*;
-import org.eaticious.greenlicious.Region;
-import org.eaticious.greenlicious.Season;
 
 
 public interface FoodProduct extends Serializable {
