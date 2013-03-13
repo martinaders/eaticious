@@ -41,7 +41,7 @@ public enum Unit {
 	/**
 	 * 
 	 * @param dimension The dimension used (hardcoded as String)
-	 * @param factor The conersion factor to convert into the base unit
+	 * @param factor The conversion factor to convert into the base unit
 	 */
 	private Unit(PhysicalDimension dimension, Double factor){
 		this.dimension = dimension;
@@ -96,20 +96,7 @@ public enum Unit {
 		if(!this.isConvertable(targetUnit)){
 			throw new IllegalArgumentException("Cannot convert " + targetUnit + " into " + this + " since the describe different dimensions of our world.");
 		}
-		// TODO add calculation of factor for conversion from volume to mass and vice versa
 		return  targetUnit.factor / this.factor;
-	}
-	
-	/**
-	 * 
-	 * @param dim The PhysicalDimension to convert to (this is not applicable for most dimensions but conversion between mass and volume is important)
-	 * @param unit The unit of the target PhysicalDimension
-	 * @return The converted value in the target PhysicalDimension and Unit
-	 * @throws IllegalArgumentException if conversion into targeted PhysicalDimension is not possible
-	 */
-	public Double convertToDimension(PhysicalDimension dim, Unit unit) throws IllegalArgumentException{
-		// TODO implement for conversion between volume and mass, add UnitTest
-		return 0d;
 	}
 
 }
