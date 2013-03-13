@@ -17,6 +17,9 @@ public interface SeasonDate {
 
 	public boolean setDate(Date date);
 
+	public int getMonth();
+	
+	public int getDay();
 	
 	/**
 	 * if the dates are same, after returns true as well (still in season)
