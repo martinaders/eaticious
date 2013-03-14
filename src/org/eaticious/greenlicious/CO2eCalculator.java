@@ -17,13 +17,13 @@ public interface CO2eCalculator {
 	
 	public CO2ePrint getTransportValue(FoodProduct FoodProduct, Region consumer_region, Quantity amount);
 	
-	public CO2ePrint getTransportValue(FoodProduct FoodProduct, Vessel vessel, Integer distance);
+	public CO2ePrint getTransportValue(FoodProduct FoodProduct, CommercialVessel vessel, Integer distance);
 	
-	public CO2ePrint getTransportValue(FoodProduct FoodProduct, Vessel vessel, Integer distance, Quantity amount);
+	public CO2ePrint getTransportValue(FoodProduct FoodProduct, CommercialVessel vessel, Integer distance, Quantity amount);
 	
 	public CO2ePrint getCoolingValue(FoodProduct FoodProduct, CoolingType type);
 	
-	public CO2ePrint getShoppingValue(Shoppinglist list, Vessel vessel);
+	public CO2ePrint getShoppingValue(Shoppinglist list, CommercialVessel vessel);
 	
 	public CO2ePrint getCookingValue(Recipe recipe, Region consumer_region, Date date);
 		

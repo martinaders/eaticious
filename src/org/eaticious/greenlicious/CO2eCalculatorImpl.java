@@ -25,14 +25,14 @@ public class CO2eCalculatorImpl implements CO2eCalculator {
 	}
 
 	@Override
-	public CO2ePrint getTransportValue(FoodProduct product, Vessel vessel,
+	public CO2ePrint getTransportValue(FoodProduct product, CommercialVessel vessel,
 			Integer distance) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public CO2ePrint getTransportValue(FoodProduct product, Vessel vessel,
+	public CO2ePrint getTransportValue(FoodProduct product, CommercialVessel vessel,
 			Integer distance, Quantity amount) {
 		// TODO Auto-generated method stub
 		return null;
@@ -45,7 +45,7 @@ public class CO2eCalculatorImpl implements CO2eCalculator {
 	}
 
 	@Override
-	public CO2ePrint getShoppingValue(Shoppinglist list, Vessel vessel) {
+	public CO2ePrint getShoppingValue(Shoppinglist list, CommercialVessel vessel) {
 		// TODO Auto-generated method stub
 		return null;
 	}
