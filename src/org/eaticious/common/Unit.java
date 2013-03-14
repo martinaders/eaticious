@@ -20,7 +20,9 @@ public enum Unit {
 	TEASPOON_LIQUID(PhysicalDimension.VOLUME, 202.8841362110592), TEASPOON_DRY(PhysicalDimension.VOLUME, 174.3519329796192),
 	
 	// base unit is kilometer TODO we eventually need to add other distance units 
-	KILOMETER(PhysicalDimension.DISTANCE, 1d),
+	KILOMETER(PhysicalDimension.DISTANCE, 1d), METER(PhysicalDimension.DISTANCE, 1000d),
+	YARD(PhysicalDimension.DISTANCE, 0.00091440), MILE(PhysicalDimension.DISTANCE, 1.6093),
+	NAUTICAL_MILE(PhysicalDimension.DISTANCE, 1.852),
 	
 	// base unit for energy is kWh
 	KILOWATTHOUR(PhysicalDimension.ENERGY, 1d), 
@@ -28,6 +30,8 @@ public enum Unit {
 	JOULE(PhysicalDimension.ENERGY, 3600000d), 
 	KILOCALORIES(PhysicalDimension.ENERGY, 859.84522785899),
 	BRITISH_THERMAL_UNIT(PhysicalDimension.ENERGY, 3412.1416331279),
+	
+	CO2E(PhysicalDimension.GHG, 1d), CO2(PhysicalDimension.GHG, 1d), CH4(PhysicalDimension.GHG, 25d), N2O(PhysicalDimension.GHG, 298d),  
 	
 	// these are not really physical units, just used in recipes. We might want to handle them differently
 	PIECE(PhysicalDimension.OTHER, 0d), SLICE(PhysicalDimension.OTHER, 0d), NONE(PhysicalDimension.OTHER, 0d);
