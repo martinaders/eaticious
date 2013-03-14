@@ -61,14 +61,6 @@ public enum Unit {
 	}
 	
 	/**
-	 * TODO exchange physical dimension string with enum?
-	 * @return true if the dimension is "MASS", false otherwise
-	 */
-	public boolean isMassUnit() {
-		return this.dimension.equals(PhysicalDimension.MASS);
-	}
-
-	/**
 	 * @param unit The unit to convert to
 	 * @return true if the target unit has the same dimension as this unit and UnitDimension is NOT OTHER, false otherwise
 	 */
