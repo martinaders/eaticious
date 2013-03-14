@@ -1,6 +1,5 @@
 package org.eaticious.eaternity;
 
-import java.util.Locale;
 import java.util.Map;
 
 import org.eaticious.greenlicious.Vessel;
