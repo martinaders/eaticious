@@ -32,12 +32,6 @@ public class UnitTest {
 	}
 
 	@Test
-	public void testIsMassUnit() {
-		Unit unit = Unit.KILOGRAM;
-		assertTrue(unit.isMassUnit());
-	}
-
-	@Test
 	public void testIsConvertable() {
 		Unit unit = Unit.KILOGRAM;
 		assertTrue(unit.isConvertable(Unit.OUNCE));
