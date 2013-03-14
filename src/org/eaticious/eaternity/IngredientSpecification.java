@@ -2,10 +2,8 @@ package org.eaticious.eaternity;
 
 import java.util.Map;
 
-import org.eaticious.greenlicious.Vessel;
+import org.eaticious.greenlicious.CommercialVessel;
 import org.eaticious.common.*;
-import org.eaticious.common.Quantity;
-import org.eaticious.common.Region;
 
 
 public interface IngredientSpecification {
@@ -40,7 +38,7 @@ public interface IngredientSpecification {
 	 * @param target The consuming location
 	 * @return The distances by vessel used for transport
 	 */
-	public Map<Vessel, Double> getTransportDistances(String origin, String target);
+	public Map<CommercialVessel, Double> getTransportDistances(String origin, String target);
 	
 	public CO2Value getCO2Value();
 	
