@@ -12,9 +12,21 @@ public interface Quantity extends Serializable {
 	
 	/**
 	 * 
+	 * @param amount the numeric amount
+	 */
+	public void setAmount(double amount);
+	
+	/**
+	 * 
 	 * @return the unit used
 	 */
 	public Unit getUnit();
+	
+	/**
+	 * 
+	 * @param unit the numeric amount
+	 */
+	public void setUnit(Unit unit);
 
 	/**
 	 * 
