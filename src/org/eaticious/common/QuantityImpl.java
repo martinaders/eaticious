@@ -28,4 +28,14 @@ public class QuantityImpl implements Quantity {
 		return result;
 	}
 
+	@Override
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+
+	@Override
+	public void setUnit(Unit unit) {
+		this.unit = unit;
+	}
+
 }
