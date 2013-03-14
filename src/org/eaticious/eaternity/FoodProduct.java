@@ -6,7 +6,7 @@ import java.util.Map;
 import org.eaticious.common.*;
 
 
-public interface Ingredient {
+public interface FoodProduct {
 
 	public String getName(Locale locale);
 	
@@ -22,7 +22,7 @@ public interface Ingredient {
 	public Map<Nutrient, Quantity> getNutritionData();
 	
 	
-	public List<Ingredient> getAlternatives();
+	public List<FoodProduct> getAlternatives();
 	
 	/**
 	 * probably implementable with Growth Degree Days
