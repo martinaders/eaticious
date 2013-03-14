@@ -83,5 +83,13 @@ public interface Region extends Serializable {
 	 *         correct CO2e values regarding transportation of goods
 	 */
 	public TransportationDetails getTransportationDetails();
+	
+	/**
+	 * APPROVE Aurelian: fine with you?
+	 * 
+	 * Returns the typical Landscape of this Region
+	 * @return The typical Landscape of this Region
+	 */
+	public Landscape getLandscape();
 
 }
