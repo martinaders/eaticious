@@ -13,6 +13,16 @@ import org.eaticious.common.Unit;
 public enum CommercialVessel {
 
 	TRUCK, TRAIN_ELECTRIC, TRAIN_DIESEL, PLANE, SHIP_OCEAN, SHIP_BARGE;
+	
+	private int TRAIN_STD_GTW = 1500;
+	private double TRAIN_LANDSCAPE_FLAT = 0.9;
+	private double TRAIN_LANDSCAPE_HILLY = 0.9;
+	private double TRAIN_LANDSCAPE_MOUNTAIN = 0.9;
+	private double TRAIN_WEIGHTFACTOR_BULK = 0.6;
+	private double TRAIN_WEIGHTFACTOR_AVG = 0.52;
+	private double TRAIN_WEIGHTFACTOR_VOLUME = 0.4;
+	
+	
 
 	/**
 	 * This method calculates the base emissions in CO2e per kgkm for the
@@ -108,22 +118,22 @@ public enum CommercialVessel {
 		// if no region-specific gtw-value is available gtw will be set to 1000
 		int gtw = transportingRegion.getTransportationDetails().getTrainGTW();
 		if (gtw == 0) {
-			gtw = 1000;
+			gtw = TRAIN_STD_GTW;
 		}
 
 		// determine factor for region specific landscape. If no landscape is
 		// defined the factor will be set to 1 (average, hilly region)
 		double landscapefactor;
-		switch (transportingRegion.getTransportationDetails().getLandscape()) {
+		switch (transportingRegion.getLandscape()) {
 		case FLAT:
-			landscapefactor = 0.9;
+			landscapefactor = TRAIN_LANDSCAPE_FLAT;
 			break;
 		case MOUNTAIN:
-			landscapefactor = 1.1;
+			landscapefactor = TRAIN_LANDSCAPE_MOUNTAIN;
 			break;
 		case HILL:
 		default:
-			landscapefactor = 1.0;
+			landscapefactor = TRAIN_LANDSCAPE_HILLY;
 			break;
 		}
 
@@ -132,14 +142,14 @@ public enum CommercialVessel {
 		double weightfactor;
 		switch (product.getWeightClass()) {
 		case VOLUME:
-			weightfactor = 0.4;
+			weightfactor = TRAIN_WEIGHTFACTOR_VOLUME;
 			break;
 		case BULK:
-			weightfactor = 0.6;
+			weightfactor = TRAIN_WEIGHTFACTOR_BULK;
 			break;
 		case AVERAGE:
 		default:
-			weightfactor = 0.52;
+			weightfactor = TRAIN_WEIGHTFACTOR_AVG;
 			break;
 		}
 
