@@ -4,19 +4,10 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Locale;
 
-import org.eaticious.greenlicious.TransportationDetails;
+import org.eaticious.greenlicious.RegionSpecification;
 
 public interface Region extends Serializable {
 	
-	/**
-	 * APPROVE Aurelian: is this ok for you?
-	 * 
-	 * used to describe the landscape of a region, used mainly when calculating co2e from commercial transport
-	 *
-	 */
-	public enum Landscape {
-		FLAT, HILL, MOUNTAIN;
-	}
 
 	/**
 	 * Returns the FCL code for this Region or null if the code is unknown
@@ -82,14 +73,8 @@ public interface Region extends Serializable {
 	 * @return TransportationDetails for this region needed to calculate the
 	 *         correct CO2e values regarding transportation of goods
 	 */
-	public TransportationDetails getTransportationDetails();
+	public RegionSpecification getRegionSpecification();
 	
-	/**
-	 * APPROVE Aurelian: fine with you?
-	 * 
-	 * Returns the typical Landscape of this Region
-	 * @return The typical Landscape of this Region
-	 */
-	public Landscape getLandscape();
+	
 
 }
