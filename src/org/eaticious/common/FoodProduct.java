@@ -118,10 +118,10 @@ public interface FoodProduct extends Serializable {
 	public String getCategory();
 
 	/**
-	 * Returns the WeightClass (BULK, AVERAGE, VOLUME) of this FoodProduct. If the WeightClass is not known UNKNOWN will
+	 * Returns the TransportClass (BULK, AVERAGE, VOLUME) of this FoodProduct. If the TransportClass is not known UNKNOWN will
 	 * be returned.
 	 * 
-	 * @return The WeightClass of this FoodProduct or WeightClass.UNKNOWN if the weightclass is not specified
+	 * @return The TransportClass of this FoodProduct or TransportClass.UNKNOWN if not specified
 	 */
 	public TransportClass getTransportClass();
 
