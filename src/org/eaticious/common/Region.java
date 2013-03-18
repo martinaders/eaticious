@@ -18,9 +18,10 @@ public interface Region extends Serializable {
 
 	/**
 	 * DISCUSS Should we return the country code for subregions?
-	 * Aurelian: you mean a list of the codes? if so, not necessary because you can get it via getChildren().get(i).getISOCode() ...
+	 * DISCUSS Aurelian: you mean a list of the codes? if so, not necessary because you can get it via getChildren().get(i).getISOCode() ...
 	 * if there is a iso03 code for a bigger region than country then yes
 	 * What whould be nice if the region is not a country, to have something like the geographical bounderies, but don't know how.
+	 * DISCUSS No, I meant for smaller regions like a Kanton or Bundesland... probably null... we might want to add RegionTypes instead, sth. like RegionType.COUNTRY, RegionType.CONTINENT, RegionType.STATE, RegionType.CITY
 	 * 
 	 * Returns the ISO3 Code of this Region if it is a country or null otherwise
 	 * @return ISO3 Code for this Region or this region's parent or null
