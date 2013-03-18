@@ -4,8 +4,6 @@ import java.util.Map;
 
 import org.eaticious.common.*;
 
-import vessels.Vessel;
-
 
 public interface IngredientSpecification {
 	
@@ -39,7 +37,7 @@ public interface IngredientSpecification {
 	 * @param target The consuming location
 	 * @return The distances by vessel used for transport
 	 */
-	public Map<Vessel, Double> getTransportDistances(String origin, String target);
+	public Map<String, Double> getTransportDistances(String origin, String target);
 	
 	public CO2Value getCO2Value();
 	
