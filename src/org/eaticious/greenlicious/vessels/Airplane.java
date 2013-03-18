@@ -8,6 +8,7 @@ import java.util.Map;
 import org.eaticious.common.Quantity;
 import org.eaticious.common.QuantityImpl;
 import org.eaticious.common.Unit;
+import org.eaticious.greenlicious.calc.RFICalculator;
 
 public class Airplane implements Vessel {
 

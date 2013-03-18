@@ -1,4 +1,4 @@
-package org.eaticious.greenlicious.vessels;
+package org.eaticious.greenlicious.calc;
 
 import java.util.Map;
 import java.util.TreeMap;
