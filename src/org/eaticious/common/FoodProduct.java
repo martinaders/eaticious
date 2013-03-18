@@ -9,6 +9,7 @@ import java.util.Map;
 public interface FoodProduct extends Serializable {
 
 	// APPROVE Aurelian: check if this is ok with you
+	// Aurelian: Yes it is, could you specify what the range of the classes are? probably via density?
 	public enum WeightClass {
 		BULK, AVERAGE, VOLUME, UNKNOWN;
 	}
@@ -119,7 +120,7 @@ public interface FoodProduct extends Serializable {
 
 	/**
 	 * APPROVE Aurelian: check if this is ok with you
-	 * 
+	 * Aurelian: see above
 	 * Returns the WeightClass (BULK, AVERAGE, VOLUME) of this FoodProduct. If
 	 * the WeightClass is not known UNKNOWN will be returned.
 	 * 

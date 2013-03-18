@@ -6,6 +6,7 @@ package org.eaticious.common;
  */
 public enum SeasonType {
 	
-	MAIN_SEASON, OUT_OF_SEASON
+	// DISCUSS Aurelian: we need also the information that a product doens't have season dependencies. best way here?
+	MAIN_SEASON, OUT_OF_SEASON, NO_SEASON
 
 }
