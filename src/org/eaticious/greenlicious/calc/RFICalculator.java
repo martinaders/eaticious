@@ -19,12 +19,13 @@ public class RFICalculator {
 	}
 
 	/**
-	 * Returns the RFI-factor for airtravels.
-	 * This factor is used to calculate the higher GHG-potential of GHG-emissions when emitted near the border of the atmosphere.
-	 * The factor is calculated using the distance of a flight assuming that long distance flights are traveling in higher regions than short distance flights.
-	 * Values taken from ECOTransIT (2012)
+	 * Returns the RFI-factor for airtravels. This factor is used to calculate the higher GHG-potential of GHG-emissions
+	 * when emitted near the border of the atmosphere. The factor is calculated using the distance of a flight assuming
+	 * that long distance flights are traveling in higher regions than short distance flights. Values taken from
+	 * ECOTransIT (2012)
 	 * 
-	 * @param distance The distance of the airtravel
+	 * @param distance
+	 *            The distance of the airtravel
 	 * @return The rfi factor for the airtravel
 	 */
 	public static double getRFIFactor(Integer distance) {
@@ -41,8 +42,9 @@ public class RFICalculator {
 
 			for (Integer key : rfiValues.keySet()) {
 				int diff = distance - key;
-				if(diff < 0){
-					// Since TreeMap is sorted by keys and the actual key is bigger than the distance, maxKey is found and the loop will be stopped
+				if (diff < 0) {
+					// Since TreeMap is sorted by keys and the actual key is bigger than the distance, maxKey is found
+					// and the loop will be stopped
 					maxKey = key;
 					break;
 				} else {
@@ -50,15 +52,18 @@ public class RFICalculator {
 					minKey = key;
 				}
 			}
-			
-			if(minKey == null){
-				// Could happen if distance is smaller than smallest defined key
+
+			if (minKey == null) {
+				// Could happen if distance is smaller than the smallest defined key
 				result = rfiValues.get(maxKey);
+			} else if (maxKey == null) {
+				// Could happen if distance is bigger than the highest defined key
+				result = rfiValues.get(minKey);
 			} else {
 				// linear interpolation
 				double minValue = rfiValues.get(minKey);
 				double steep = (rfiValues.get(maxKey) - minValue) / (maxKey - minKey);
-				result = minValue + steep * (distance - minValue);
+				result = minValue + steep * (distance - minKey);
 			}
 		}
 
