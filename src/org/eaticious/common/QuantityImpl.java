@@ -7,9 +7,22 @@ public class QuantityImpl implements Quantity {
 	private Unit unit;
 	private Double amount;
 	
+	/**
+	 * Empty Constructor needed for objectify
+	 */
+	public QuantityImpl() {}
+	
 	public QuantityImpl(Double amount, Unit unit){
 		this.unit = unit;
 		this.amount = amount;
+	}
+	
+	/**
+	 * Copy constructor
+	 */
+	public QuantityImpl(Quantity other) {
+		unit = other.getUnit();
+		amount = new Double(amount);
 	}
 
 	@Override

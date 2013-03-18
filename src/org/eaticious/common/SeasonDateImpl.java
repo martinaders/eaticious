@@ -29,6 +29,7 @@ public class SeasonDateImpl implements SeasonDate {
 		setDate(date);
 	}
 	
+	// copy constructor
 	public SeasonDateImpl(SeasonDate toClone) {
 		month = toClone.getMonth();
 		day = toClone.getDay();
