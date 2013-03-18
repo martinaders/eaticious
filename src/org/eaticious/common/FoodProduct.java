@@ -20,7 +20,7 @@ public interface FoodProduct extends Serializable {
 	 * 
 	 * AVERAGE: statistically determined average value for all transports of a given carrier in a reference year
 	 */
-	public enum WeightClass {
+	public enum TransportClass {
 		BULK, AVERAGE, VOLUME, UNKNOWN;
 	}
 
@@ -118,11 +118,11 @@ public interface FoodProduct extends Serializable {
 	public String getCategory();
 
 	/**
-	 * APPROVE Aurelian: check if this is ok with you Aurelian: see above Returns the WeightClass (BULK, AVERAGE,
-	 * VOLUME) of this FoodProduct. If the WeightClass is not known UNKNOWN will be returned.
+	 * Returns the WeightClass (BULK, AVERAGE, VOLUME) of this FoodProduct. If the WeightClass is not known UNKNOWN will
+	 * be returned.
 	 * 
 	 * @return The WeightClass of this FoodProduct or WeightClass.UNKNOWN if the weightclass is not specified
 	 */
-	public WeightClass getWeightClass();
+	public TransportClass getTransportClass();
 
 }
