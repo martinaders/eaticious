@@ -27,13 +27,6 @@ public interface Region extends Serializable {
 	public String getISOCode();
 
 	/**
-	 * CHECK do we need this? What will be returned?
-	 * Aurelian: no, don't think its necessary...
-	 * @return
-	 */
-	public String getName();
-
-	/**
 	 * Returns the name of this Region in the specified language or null if
 	 * there is no translation for the language
 	 * 
