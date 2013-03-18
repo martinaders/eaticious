@@ -17,6 +17,10 @@ public interface Region extends Serializable {
 
 	/**
 	 * DISCUSS Should we return the country code for subregions?
+	 * Aurelian: you mean a list of the codes? if so, not necessary because you can get it via getChildren().get(i).getISOCode() ...
+	 * if there is a iso03 code for a bigger region than country then yes
+	 * What whould be nice if the region is not a country, to have something like the geographical bounderies, but don't know how.
+	 * 
 	 * Returns the ISO3 Code of this Region if it is a country or null otherwise
 	 * @return ISO3 Code for this Region or this region's parent or null
 	 */
@@ -24,7 +28,7 @@ public interface Region extends Serializable {
 
 	/**
 	 * CHECK do we need this? What will be returned?
-	 * 
+	 * Aurelian: no, don't think its necessary...
 	 * @return
 	 */
 	public String getName();
@@ -59,6 +63,8 @@ public interface Region extends Serializable {
 
 	/**
 	 * APPROVE Aurealian, fine with you?
+	 * Aurelian: definitly needed here, but i would return an EmissionFactor (eaternity), 
+	 * the Name of the energymix is also provided then (necessary for us)
 	 * 
 	 * This will return the region-specific energyMixFactor for conversion from
 	 * kWh to CO2e
@@ -69,6 +75,7 @@ public interface Region extends Serializable {
 
 	/**
 	 * DISCUSS better way to handle this?
+	 * Aurelian: Hm alright, very detailed but doesn't disturb
 	 * 
 	 * @return TransportationDetails for this region needed to calculate the
 	 *         correct CO2e values regarding transportation of goods

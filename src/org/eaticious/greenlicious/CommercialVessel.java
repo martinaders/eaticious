@@ -97,7 +97,7 @@ public enum CommercialVessel {
 	}
 
 	/**
-	 * DISCUSS (Daniel) what should be assumed as transportingRegion is transport is passing
+	 * DISCUSS (Daniel) what should be assumed as transportingRegion if transport is passing
 	 * borders? (the energymix of different countries is not equal)
 	 * 
 	 * Calculates the base emission in CO2e per kgkm for electric train
