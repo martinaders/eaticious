@@ -11,7 +11,7 @@ import org.eaticious.common.Unit;
 import org.eaticious.greenlicious.CO2ePrint;
 import org.eaticious.greenlicious.CoolingType;
 import org.eaticious.greenlicious.Shoppinglist;
-import org.eatlicious.greenlicious.vessels.Vessel;
+import org.eaticious.greenlicious.vessels.Vessel;
 
 
 public class CO2eCalculatorImpl implements CO2eCalculator {
