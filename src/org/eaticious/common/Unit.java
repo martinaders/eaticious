@@ -19,7 +19,7 @@ public enum Unit {
 	TABLESPOON_LIQUID(PhysicalDimension.VOLUME, 67.6280454036864), TABLESPOON_DRY(PhysicalDimension.VOLUME, 58.1173109932064), 
 	TEASPOON_LIQUID(PhysicalDimension.VOLUME, 202.8841362110592), TEASPOON_DRY(PhysicalDimension.VOLUME, 174.3519329796192),
 	
-	// base unit is kilometer TODO we eventually need to add other distance units 
+	// base unit is kilometer 
 	KILOMETER(PhysicalDimension.DISTANCE, 1d), METER(PhysicalDimension.DISTANCE, 1000d),
 	YARD(PhysicalDimension.DISTANCE, 0.00091440), MILE(PhysicalDimension.DISTANCE, 1.6093),
 	NAUTICAL_MILE(PhysicalDimension.DISTANCE, 1.852),
