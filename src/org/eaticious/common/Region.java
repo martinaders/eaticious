@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Locale;
 
+import org.eaticious.eaternity.EmissionFactor;
 import org.eaticious.greenlicious.RegionSpecification;
 
 public interface Region extends Serializable {
@@ -55,16 +56,12 @@ public interface Region extends Serializable {
 	public List<Region> getChildren();
 
 	/**
-	 * APPROVE Aurealian, fine with you?
-	 * Aurelian: definitly needed here, but i would return an EmissionFactor (eaternity), 
-	 * the Name of the energymix is also provided then (necessary for us)
-	 * 
 	 * This will return the region-specific energyMixFactor for conversion from
 	 * kWh to CO2e
 	 * 
-	 * @return The factor to be multiplied with kWh in order to calculate CO2e
+	 * @return The EmissionFactor (to be multiplied with kWh in order to calculate CO2e)
 	 */
-	public double getEnergyMixFactor();
+	public EmissionFactor getEnergyMixFactor();
 
 	/**
 	 * DISCUSS better way to handle this?
