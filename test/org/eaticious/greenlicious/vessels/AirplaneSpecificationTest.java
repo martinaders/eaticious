@@ -7,10 +7,6 @@ import java.util.HashMap;
 
 import org.eaticious.greenlicious.vessels.AirplaneSpecification.AirplaneSize;
 import org.eaticious.greenlicious.vessels.AirplaneSpecification.StandardModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class AirplaneSpecificationTest {
