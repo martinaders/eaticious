@@ -5,17 +5,17 @@ import java.util.TreeMap;
 
 public class RFICalculator {
 
-	private static Map<Integer, Double> rfiValues;
+	private static Map<Double, Double> rfiValues;
 
 	static {
 		// values taken from EcoTransIT (2012)
-		rfiValues = new TreeMap<Integer, Double>();
-		rfiValues.put(500, 1d);
-		rfiValues.put(750, 1.81);
-		rfiValues.put(1000, 2.18);
-		rfiValues.put(2000, 2.52);
-		rfiValues.put(4000, 2.73);
-		rfiValues.put(10000, 2.87);
+		rfiValues = new TreeMap<Double, Double>();
+		rfiValues.put(500d, 1d);
+		rfiValues.put(750d, 1.81);
+		rfiValues.put(1000d, 2.18);
+		rfiValues.put(2000d, 2.52);
+		rfiValues.put(4000d, 2.73);
+		rfiValues.put(10000d, 2.87);
 	}
 
 	/**
@@ -28,7 +28,7 @@ public class RFICalculator {
 	 *            The distance of the airtravel
 	 * @return The rfi factor for the airtravel
 	 */
-	public static double getRFIFactor(Integer distance) {
+	public static double getRFIFactor(Double distance) {
 		double result = 1d;
 		if (distance <= 0) {
 			throw new IllegalArgumentException("The distance has to be bigger than 0, was " + distance.toString());
@@ -37,11 +37,11 @@ public class RFICalculator {
 		if (rfiValues.containsKey(distance)) {
 			result = rfiValues.get(distance);
 		} else {
-			Integer minKey = null;
-			Integer maxKey = null;
+			Double minKey = null;
+			Double maxKey = null;
 
-			for (Integer key : rfiValues.keySet()) {
-				int diff = distance - key;
+			for (Double key : rfiValues.keySet()) {
+				double diff = distance - key;
 				if (diff < 0) {
 					// Since TreeMap is sorted by keys and the actual key is bigger than the distance, maxKey is found
 					// and the loop will be stopped

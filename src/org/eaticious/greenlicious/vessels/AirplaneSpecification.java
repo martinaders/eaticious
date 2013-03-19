@@ -28,29 +28,29 @@ public class AirplaneSpecification implements Vessel {
 
 		F_737_200C(AirplaneSize.SMALL, 17300, 2240, 0, Arrays.asList(1800d, 2495d, 3727d, 4950d, 6191d, 8722d, 11438d)),
 
-		P_747_400(AirplaneSize.BIG, 14, 13450, 416, Arrays.asList(6331d, 9058d, 13405d, 17751d, 22097d, 30922d, 40267d,
+		P_747_400(AirplaneSize.BIG, 14000, 13450, 416, Arrays.asList(6331d, 9058d, 13405d, 17751d, 22097d, 30922d, 40267d,
 				49480d, 59577d, 69888d, 80789d, 91986d, 103611d, 115553d, 128171d, 141254d, 155563d, 169088d)),
 
-		P_757_200(AirplaneSize.MEDIUM, 4, 7222, 200, Arrays.asList(2423d, 3410d, 5070d, 6724d, 8391d, 11846d, 15407d,
+		P_757_200(AirplaneSize.MEDIUM, 4000, 7222, 200, Arrays.asList(2423d, 3410d, 5070d, 6724d, 8391d, 11846d, 15407d,
 				19026d, 22348d, 25683d, 28968d)),
 
-		P_FOKKER100(AirplaneSize.SMALL, 1, 3170, 85, Arrays.asList(1468d, 2079d, 3212d, 4286d, 5480d, 7796d, 10400d));
+		P_FOKKER100(AirplaneSize.SMALL, 1000, 3170, 85, Arrays.asList(1468d, 2079d, 3212d, 4286d, 5480d, 7796d, 10400d));
 
 		private int seats;
 		private int maxRange;
 		private int maxPayload;
 		private AirplaneSize size;
-		private Map<Integer, Double> consumptionProfile;
-		private List<Integer> consumptionDistances = Arrays.asList(232, 463, 926, 1389, 1852, 2778, 3704, 4630, 5556,
-				6482, 7408, 8334, 9260, 10186, 11112, 12038, 12964, 13890);
+		private Map<Double, Double> consumptionProfile;
+		private List<Double> consumptionDistances = Arrays.asList(232d, 463d, 926d, 1389d, 1852d, 2778d, 3704d, 4630d, 5556d,
+				6482d, 7408d, 8334d, 9260d, 10186d, 11112d, 12038d, 12964d, 13890d);
 
 		private StandardModel(AirplaneSize size, int maxPayload, int maxRange, int seats, List<Double> consumption) {
 			this.seats = seats;
 			this.maxRange = maxRange;
 			this.maxPayload = maxPayload;
 			this.size = size;
-			this.consumptionProfile = new HashMap<Integer, Double>();
-			Iterator<Integer> it = consumptionDistances.iterator();
+			this.consumptionProfile = new HashMap<Double, Double>();
+			Iterator<Double> it = consumptionDistances.iterator();
 			for (Double value : consumption) {
 				consumptionProfile.put(it.next(), value);
 			}
@@ -97,7 +97,7 @@ public class AirplaneSpecification implements Vessel {
 		 * @return the consumption profile of this StandardModel as a Map having distances in kilometer as keys and
 		 *         kerosene consumption in kg as value
 		 */
-		public Map<Integer, Double> getConsumptionProfile() {
+		public Map<Double, Double> getConsumptionProfile() {
 			return this.consumptionProfile;
 		}
 	}
@@ -105,7 +105,7 @@ public class AirplaneSpecification implements Vessel {
 	/**
 	 * A map having distance in kilometer as key and consumption in kg kerosene as value
 	 */
-	private Map<Integer, Double> consumptionProfile;
+	private Map<Double, Double> consumptionProfile;
 	/**
 	 * The maximum flight range of the Airplane
 	 */
@@ -151,7 +151,7 @@ public class AirplaneSpecification implements Vessel {
 	 *            profile having distances in kilometer as key and kerosene consumption in kg as value
 	 */
 	public AirplaneSpecification(AirplaneSize size, Integer seats, Integer maxRange, Integer maxPayload,
-			Map<Integer, Double> consumptionProfile) {
+			Map<Double, Double> consumptionProfile) {
 		this.size = size;
 		this.seats = seats;
 		this.maxRange = maxRange;
@@ -204,7 +204,7 @@ public class AirplaneSpecification implements Vessel {
 	 * 
 	 * @return The consumption profile of this Airplane
 	 */
-	public Map<Integer, Double> getConsumptionProfile() {
+	public Map<Double, Double> getConsumptionProfile() {
 		return this.consumptionProfile;
 	}
 
@@ -213,7 +213,7 @@ public class AirplaneSpecification implements Vessel {
 	 * @param distance the distance of the flight in kilometer
 	 * @param value the kerosene consumption over the distance
 	 */
-	public void addConsumptionEntry(Integer distance, Double value) {
+	public void addConsumptionEntry(Double distance, Double value) {
 		if(distance == null || value == null || distance < 0 || value < 0){
 			throw new IllegalArgumentException("Parameters distance and value have to be not null and >= 0");
 		}
