@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashMap;
 
 import org.eaticious.greenlicious.vessels.AirplaneSpecification.AirplaneSize;
+import org.eaticious.greenlicious.vessels.AirplaneSpecification.StandardModel;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -104,6 +105,19 @@ public class AirplaneSpecificationTest {
 	public void testAddConsumptionEntryNegValue() {
 		AirplaneSpecification spec = new AirplaneSpecification(AirplaneSize.SMALL, 1, 100, 2, new HashMap<Integer, Double>() );
 		spec.addConsumptionEntry(10, -100d);
+	}
+	
+	@Test
+	public void testAirplaneSpecificationOtherConstructor(){
+		AirplaneSpecification spec = new AirplaneSpecification(StandardModel.P_747_400);
+		assertTrue("747 should be a big airplane.", spec.getSize() == AirplaneSize.BIG);
+		assertTrue("747 should have more than 0 seats.", spec.getSeats() > 0);
+		assertTrue("Range of 747 should be bigger than 0.", spec.getMaxRange() > 0);
+		assertTrue("747 should have a bigger payload capacity than 0", spec.getMaxPayload() > 0);
+		assertTrue("Standard model should have a consumption profile", spec.hasConsumptionData());
+		assertTrue("Standard model should have a consumption profile", spec.getConsumptionProfile().size() > 0);
+		
+		
 	}
 
 }
