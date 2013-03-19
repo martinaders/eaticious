@@ -214,6 +214,9 @@ public class AirplaneSpecification implements Vessel {
 	 * @param value the kerosene consumption over the distance
 	 */
 	public void addConsumptionEntry(Integer distance, Double value) {
+		if(distance == null || value == null || distance < 0 || value < 0){
+			throw new IllegalArgumentException("Parameters distance and value have to be not null and >= 0");
+		}
 		this.consumptionProfile.put(distance, value);
 	}
 
