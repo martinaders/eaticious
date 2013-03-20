@@ -88,7 +88,7 @@ public class Airplane implements Vessel {
 	 *            otherwise
 	 * @return The CO2e emission for the whole flight
 	 */
-	public Quantity getTotalCO2e(Double distance, boolean useRFI) {
+	public Quantity getTotalCO2e(Quantity distance, boolean useRFI) {
 		// TODO check if flight distance should be adjusted in here or if this is done by caller
 		Double fuelConsumption = this.getFuelConsumption(distance).getAmount();
 		if (useRFI) {
@@ -111,9 +111,10 @@ public class Airplane implements Vessel {
 	 *            otherwise
 	 * @return The CO2e emission per kilometer for the whole flight
 	 */
-	public Quantity getTotalCO2ePerKM(Double distance, boolean useRFI) {
+	public Quantity getTotalCO2ePerKM(Quantity distance, boolean useRFI) {
+		Double calcDistance = distance.convert(Unit.KILOMETER).getAmount();
 		Quantity co2e = this.getTotalCO2e(distance, useRFI);
-		co2e.setAmount(co2e.getAmount() / distance);
+		co2e.setAmount(co2e.getAmount() / calcDistance);
 		return co2e;
 	}
 
@@ -129,7 +130,7 @@ public class Airplane implements Vessel {
 	 *            otherwise
 	 * @return The CO2e emission allocated to the weight of payload for the whole flight
 	 */
-	public Quantity getCO2e(Double distance, Quantity payload, boolean useRFI) {
+	public Quantity getCO2e(Quantity distance, Quantity payload, boolean useRFI) {
 		Double co2e = this.getTotalCO2e(distance, useRFI).getAmount();
 		// calc co2e allocated to freight
 		co2e = co2e / this.getTransportedWeight(distance) * payload.convert(Unit.KILOGRAM).getAmount();
@@ -148,9 +149,9 @@ public class Airplane implements Vessel {
 	 *            otherwise
 	 * @return The CO2e emission allocated to the weight of payload per kilometer
 	 */
-	public Quantity getCO2ePerKM(Double distance, Quantity payload, boolean useRFI) {
+	public Quantity getCO2ePerKM(Quantity distance, Quantity payload, boolean useRFI) {
 		Quantity co2e = this.getCO2e(distance, payload, useRFI);
-		co2e.setAmount(co2e.getAmount() / distance);
+		co2e.setAmount(co2e.getAmount() / distance.convert(Unit.KILOMETER).getAmount());
 		return co2e;
 	}
 
@@ -162,7 +163,7 @@ public class Airplane implements Vessel {
 	 *            The distance traveled
 	 * @return The average payload in kilogram for flights over the given distance
 	 */
-	private double getTransportedWeight(Double distance) {
+	private double getTransportedWeight(Quantity distance) {
 		HaulDistance hd = this.getHaulDistance(distance);
 		double freightWeight = this.specs.getMaxPayload() * freightCapacityUtilization.get(hd);
 		double passengerWeight = this.specs.getSeats() * passengerCapacityUtilization.get(hd) * WEIGHT_PER_PASSENGER;
@@ -176,14 +177,15 @@ public class Airplane implements Vessel {
 	 *            the real distance traveled
 	 * @return The HaulDistance which matches the real distance traveled
 	 */
-	private HaulDistance getHaulDistance(Double distance) {
-		if (distance < 0) {
+	private HaulDistance getHaulDistance(Quantity distance) {
+		Double calcDistance = distance.convert(Unit.KILOMETER).getAmount();
+		if (calcDistance < 0) {
 			throw new IllegalArgumentException("Distance has to be bigger than 0, was " + distance);
 		}
 
 		HaulDistance result = null;
 		for (HaulDistance dist : HaulDistance.values()) {
-			if (dist.minDistance <= distance && dist.maxDistance > distance) {
+			if (dist.minDistance <= calcDistance && dist.maxDistance > calcDistance) {
 				result = dist;
 				break;
 			}
@@ -198,12 +200,13 @@ public class Airplane implements Vessel {
 	 *            The total distance traveled for the transport
 	 * @return The amount of fuel burned by this Airplane when traveling the given distance.
 	 */
-	public Quantity getFuelConsumption(Double distance) {
+	public Quantity getFuelConsumption(Quantity distance) {
 		Double result = null;
+		Double calcDistance = distance.convert(Unit.KILOMETER).getAmount();
 
 		// calculate with multiple trips if distance exceeds the max range of this airplane
-		double numTrips = Math.ceil(distance.doubleValue() / this.specs.getMaxRange());
-		double calcDist = distance / numTrips;
+		double numTrips = Math.ceil(calcDistance / this.specs.getMaxRange());
+		double calcDist = calcDistance / numTrips;
 
 		if (this.specs.hasConsumptionData()) {
 			Map<Double, Double> consumptionProfile = this.specs.getConsumptionProfile();

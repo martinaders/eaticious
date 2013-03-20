@@ -6,9 +6,6 @@ import org.eaticious.common.Quantity;
 import org.eaticious.common.QuantityImpl;
 import org.eaticious.common.Unit;
 import org.eaticious.greenlicious.vessels.TruckSpecification.TruckModel;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -22,19 +19,6 @@ public class TruckTest {
 	public static void setUpBeforeClass() throws Exception {
 		truck40000 = new Truck(TruckModel.TR_40000);
 		truck7500 = new Truck(TruckModel.TR_7500);
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
-	@Before
-	public void setUp() throws Exception {
-
-	}
-
-	@After
-	public void tearDown() throws Exception {
 	}
 
 	@Test
@@ -139,6 +123,26 @@ public class TruckTest {
 	public void testGetCO2ePerKM_Exception() {
 		Quantity payload = new QuantityImpl(753d, Unit.CENTILITRE);
 		truck40000.getCO2ePerKM(payload, 0.8, 0.5);
+	}
+	
+	@Test
+	public void testGetFuelConsumption() {
+		Double expected;
+		Double actual;
+		Double loadFactor;
+		Double emptyTripFactor;
+		
+		loadFactor = 0.8;
+		emptyTripFactor = 0.4;
+		expected = 43.3;
+		actual = truck40000.getFuelConsumption(loadFactor, emptyTripFactor).getAmount();
+		assertEquals(expected, actual);
+		
+		loadFactor = 0.4;
+		emptyTripFactor = 0.7;
+		expected = 18.66;
+		actual = Math.round(truck7500.getFuelConsumption(loadFactor, emptyTripFactor).getAmount() * 100) / 100.0;
+		assertEquals(expected, actual);
 	}
 
 }

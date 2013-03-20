@@ -3,6 +3,9 @@ package org.eaticious.greenlicious.calc;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.eaticious.common.Quantity;
+import org.eaticious.common.Unit;
+
 public class RFICalculator {
 
 	private static Map<Double, Double> rfiValues;
@@ -28,20 +31,21 @@ public class RFICalculator {
 	 *            The distance of the airtravel
 	 * @return The rfi factor for the airtravel
 	 */
-	public static double getRFIFactor(Double distance) {
+	public static double getRFIFactor(Quantity distance) {
 		double result = 1d;
-		if (distance <= 0) {
+		Double calcDistance = distance.convert(Unit.KILOMETER).getAmount();
+		if (calcDistance <= 0) {
 			throw new IllegalArgumentException("The distance has to be bigger than 0, was " + distance.toString());
 		}
 
-		if (rfiValues.containsKey(distance)) {
-			result = rfiValues.get(distance);
+		if (rfiValues.containsKey(calcDistance)) {
+			result = rfiValues.get(calcDistance);
 		} else {
 			Double minKey = null;
 			Double maxKey = null;
 
 			for (Double key : rfiValues.keySet()) {
-				double diff = distance - key;
+				double diff = calcDistance - key;
 				if (diff < 0) {
 					// Since TreeMap is sorted by keys and the actual key is bigger than the distance, maxKey is found
 					// and the loop will be stopped
@@ -63,7 +67,7 @@ public class RFICalculator {
 				// linear interpolation
 				double minValue = rfiValues.get(minKey);
 				double steep = (rfiValues.get(maxKey) - minValue) / (maxKey - minKey);
-				result = minValue + steep * (distance - minKey);
+				result = minValue + steep * (calcDistance - minKey);
 			}
 		}
 
