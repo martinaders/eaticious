@@ -33,6 +33,6 @@ public interface Quantity extends Serializable {
 	 * @param unit
 	 * @return
 	 */
-	public Quantity convert(Unit unit);
+	public Quantity convert(Unit unit) throws IllegalArgumentException;
 
 }
