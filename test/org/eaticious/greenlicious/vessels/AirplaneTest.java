@@ -37,25 +37,25 @@ public class AirplaneTest {
 
 		// matching defined value
 		distance = 100d;
-		Double expected = plane.getFuelConsumption(distance) * Airplane.KEROSENE_TO_CO2E_FACTOR;
+		Double expected = plane.getFuelConsumption(distance).getAmount() * Airplane.KEROSENE_TO_CO2E_FACTOR;
 		Double actual = plane.getTotalCO2e(distance, false).getAmount();
 		assertTrue("Expected: " + expected + " - Actual: " + actual, expected.equals(actual));
 
 		// in between values
 		distance = 147.9;
-		expected = plane.getFuelConsumption(distance) * Airplane.KEROSENE_TO_CO2E_FACTOR;
+		expected = plane.getFuelConsumption(distance).getAmount() * Airplane.KEROSENE_TO_CO2E_FACTOR;
 		actual = plane.getTotalCO2e(distance, false).getAmount();
 		assertTrue("Expected: " + expected + " - Actual: " + actual, expected.equals(actual));
 
 		// 25% of lowest value
 		distance = 2.5;
-		expected = plane.getFuelConsumption(distance) * Airplane.KEROSENE_TO_CO2E_FACTOR;
+		expected = plane.getFuelConsumption(distance).getAmount() * Airplane.KEROSENE_TO_CO2E_FACTOR;
 		actual = plane.getTotalCO2e(distance, false).getAmount();
 		assertTrue("Expected: " + expected + " - Actual: " + actual, expected.equals(actual));
 
 		// 100% of highest value
 		distance = 200.0;
-		expected = plane.getFuelConsumption(distance) * Airplane.KEROSENE_TO_CO2E_FACTOR;
+		expected = plane.getFuelConsumption(distance).getAmount() * Airplane.KEROSENE_TO_CO2E_FACTOR;
 		actual = plane.getTotalCO2e(distance, false).getAmount();
 		assertTrue("Expected: " + expected + " - Actual: " + actual, expected.equals(actual));
 	}
@@ -220,27 +220,27 @@ public class AirplaneTest {
 
 		// matching defined value
 		Double expected = new Double(10);
-		Double actual = plane.getFuelConsumption(100d);
+		Double actual = plane.getFuelConsumption(100d).getAmount();
 		assertTrue("Expected: " + expected + " - Actual: " + actual, expected.equals(actual));
 
 		// in the middle of two defined values
 		expected = new Double(15);
-		actual = plane.getFuelConsumption(150d);
+		actual = plane.getFuelConsumption(150d).getAmount();
 		assertTrue("Expected: " + expected + " - Actual: " + actual, expected.equals(actual));
 
 		// somewhere in between values
 		expected = new Double(30);
-		actual = plane.getFuelConsumption(300d);
+		actual = plane.getFuelConsumption(300d).getAmount();
 		assertTrue("Expected: " + expected + " - Actual: " + actual, expected.equals(actual));
 
 		// 25% of lowest value
 		expected = new Double(2.5);
-		actual = plane.getFuelConsumption(25d);
+		actual = plane.getFuelConsumption(25d).getAmount();
 		assertTrue("Expected: " + expected + " - Actual: " + actual, expected.equals(actual));
 
 		// 100% of highest value
 		expected = new Double(200);
-		actual = plane.getFuelConsumption(2000d);
+		actual = plane.getFuelConsumption(2000d).getAmount();
 		assertTrue("Expected: " + expected + " - Actual: " + actual, expected.equals(actual));
 	}
 

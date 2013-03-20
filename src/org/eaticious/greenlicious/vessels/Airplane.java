@@ -90,7 +90,7 @@ public class Airplane implements Vessel {
 	 */
 	public Quantity getTotalCO2e(Double distance, boolean useRFI) {
 		// TODO check if flight distance should be adjusted in here or if this is done by caller
-		Double fuelConsumption = this.getFuelConsumption(distance);
+		Double fuelConsumption = this.getFuelConsumption(distance).getAmount();
 		if (useRFI) {
 			// multiply with rfi factor
 			fuelConsumption *= RFICalculator.getRFIFactor(distance);
@@ -198,7 +198,7 @@ public class Airplane implements Vessel {
 	 *            The total distance traveled for the transport
 	 * @return The amount of fuel burned by this Airplane when traveling the given distance.
 	 */
-	public Double getFuelConsumption(Double distance) {
+	public Quantity getFuelConsumption(Double distance) {
 		Double result = null;
 
 		// calculate with multiple trips if distance exceeds the max range of this airplane
@@ -244,7 +244,7 @@ public class Airplane implements Vessel {
 
 			}
 		}
-		return result * numTrips;
+		return new QuantityImpl(result * numTrips, Unit.KILOGRAM);
 	}
 
 }
