@@ -5,30 +5,16 @@ import static org.junit.Assert.*;
 import org.eaticious.common.Quantity;
 import org.eaticious.common.QuantityImpl;
 import org.eaticious.common.Unit;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class RFICalculatorTest {
 	
-	private static Quantity distance = new QuantityImpl(1d, Unit.KILOMETER);
-
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
+	private Quantity distance;
 
 	@Before
 	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
+		this.distance = new QuantityImpl(1d, Unit.KILOMETER);
 	}
 
 	@Test
