@@ -14,10 +14,7 @@ public class Conservation implements Serializable, Cloneable{
 	public String symbol;
 	public Double factor;
 	
-	/**
-	 * CHECK what is this constructor for? Just avoiding instantiation? This is already done by providing the second constructor
-	 */
-	private Conservation()	{  }
+	private Conservation()	{ /* needed for objectify */  }
 	
 	public Conservation(final Conservation toClone) {
 		symbol = new String(toClone.symbol);

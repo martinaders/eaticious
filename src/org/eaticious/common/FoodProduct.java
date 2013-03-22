@@ -113,8 +113,7 @@ public interface FoodProduct extends Serializable {
 	 */
 	String getShoppingInfo();
 
-	// probably (if not possible via ProductClassification), return type ev.
-	// enum
+	// probably (if not possible via ProductClassification), return type ev. enum
 	String getCategory();
 
 	/**
