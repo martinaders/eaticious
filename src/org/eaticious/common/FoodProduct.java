@@ -106,7 +106,7 @@ public interface FoodProduct extends Serializable {
 	 * 
 	 * @return
 	 */
-	public String getSynonyms();
+	public List<String> getSynonyms();
 
 	/**
 	 * @return A String giving additional information about what to bear in mind when buying this product
