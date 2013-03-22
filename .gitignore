@@ -3,3 +3,4 @@
 /war/WEB-INF/appengine-web.xml
 /war/WEB-INF/lib
 /reports
+/.pmd
