@@ -10,24 +10,24 @@ import org.eaticious.common.User;
 
 public interface Shoppinglist {
 	
-	public Map<FoodProduct, Quantity> getEntries();
+	Map<FoodProduct, Quantity> getEntries();
 	
-	public List<Dish> getMeals();
+	List<Dish> getMeals();
 	
-	public void addMeal(Dish meal);
+	void addMeal(Dish meal);
 	
-	public void removeMeal(Dish meal);
+	void removeMeal(Dish meal);
 	
-	public String getShoppingInfo(FoodProduct product);
+	String getShoppingInfo(FoodProduct product);
 	
-	public boolean getStatus();
+	boolean getStatus();
 	
-	public Boolean getStatus(FoodProduct product);
+	Boolean getStatus(FoodProduct product);
 	
-	public void setStatus (FoodProduct product);
+	void setStatus (FoodProduct product);
 	
-	public User getUser();
+	User getUser();
 	
-	public void setUser(User user);
+	void setUser(User user);
 
 }

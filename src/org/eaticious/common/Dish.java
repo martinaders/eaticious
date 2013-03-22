@@ -5,15 +5,15 @@ import java.util.Date;
 
 public interface Dish extends Serializable {
 	
-	public Recipe getRecipe();
+	Recipe getRecipe();
 	
-	public Integer getServings();
+	Integer getServings();
 	
-	public Date getCookingDate();
+	Date getCookingDate();
 	
-	public Quantity getCO2eValue();
+	Quantity getCO2eValue();
 	
-	public User getUser();
+	User getUser();
 	
-	public Long getKitchenId();
+	Long getKitchenId();
 }

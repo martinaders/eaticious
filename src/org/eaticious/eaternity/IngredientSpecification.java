@@ -7,25 +7,25 @@ import org.eaticious.common.*;
 
 public interface IngredientSpecification {
 	
-	public FoodProduct getFoodProduct();
+	FoodProduct getFoodProduct();
 	
 	/**
 	 * 
 	 * @return The Amount of this Ingredient needed in the associated Recipe, the original unit is preserved
 	 */
-	public Quantity getAmount();
+	Quantity getAmount();
 	
 	/**
 	 * 
 	 * @return The normalized Amount of this Ingredient needed in the associated Recipe, the Amount is standardized in grams / milliliters
 	 */
-	public Quantity getNormalizedAmount();
+	Quantity getNormalizedAmount();
 	
 	/**
 	 * 
 	 * @return A Map holding amounts of nutrients per serving of the associated recipe
 	 */
-	public Map<Nutrient, Quantity> getNutritionData();
+	Map<Nutrient, Quantity> getNutritionData();
 
 	
 	// eaternity specific
@@ -37,18 +37,18 @@ public interface IngredientSpecification {
 	 * @param target The consuming location
 	 * @return The distances by vessel used for transport
 	 */
-	public Map<String, Double> getTransportDistances(String origin, String target);
+	Map<String, Double> getTransportDistances(String origin, String target);
 	
-	public CO2Value getCO2Value();
+	CO2Value getCO2Value();
 	
-	public Season getSeason();
+	Season getSeason();
 	
-	public Region getRegion();
+	Region getRegion();
 	
-	public Production getProduction();
+	Production getProduction();
 	
-	public Conservation getConservation();
+	Conservation getConservation();
 	
-	public Double getCost();
+	Double getCost();
 	
 }

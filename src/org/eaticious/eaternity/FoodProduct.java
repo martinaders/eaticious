@@ -8,61 +8,61 @@ import org.eaticious.common.*;
 
 public interface FoodProduct {
 
-	public String getName(Locale locale);
+	String getName(Locale locale);
 	
 	/**
 	 * @return The code of this product in the requested product classification or null if unknown
 	 */
-	public String getCode(ProductClassification classification);
+	String getCode(ProductClassification classification);
 	
 	/**
 	 * 
 	 * @return A Map holding amounts of nutrients per serving of the associated recipe
 	 */
-	public Map<Nutrient, Quantity> getNutritionData();
+	Map<Nutrient, Quantity> getNutritionData();
 	
 	
-	public List<FoodProduct> getAlternatives();
+	List<FoodProduct> getAlternatives();
 	
 	/**
 	 * probably implementable with Growth Degree Days
 	 * @return
 	 */
-	public Map<Region,Season> getSeasons();
+	Map<Region,Season> getSeasons();
 	
 	/**
 	 * 
 	 * @return density of ingredient for correct volume to weight transformation (EL, TL to grams)
 	 */
-	public Double getDensity();
+	Double getDensity();
 	
-	public List<String> getTags();
+	List<String> getTags();
 	
-	public Quantity getStdWeight();
+	Quantity getStdWeight();
 	
 	/**
 	 * 
 	 * @param consumer The consuming region
 	 * @return A Map holding all known producers for this product in the consuming region and the corresponding percentage the producer adds to the consumer's market
 	 */
-	public Map<Region, Integer> getProducingRegions(Region consumer);
+	Map<Region, Integer> getProducingRegions(Region consumer);
 	
 	
 	
 	// eaternity specific
 	
 	//probably (if not possible via ProductClassification)
-	public String getCategory();
+	String getCategory();
 	
-	public CO2Value getCO2Value();
+	CO2Value getCO2Value();
 	
 	// not necessary with faostat data
-	public Region getStdRegion();
+	Region getStdRegion();
 	
 	
-	public List<Production> getProductions();
+	List<Production> getProductions();
 	
-	public List<Transportation> getTransportations();
+	List<Transportation> getTransportations();
 	
 	public List<Conservation> getConservations();
 	

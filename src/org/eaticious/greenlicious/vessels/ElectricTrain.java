@@ -4,7 +4,6 @@ import org.eaticious.common.FoodProduct.TransportClass;
 import org.eaticious.common.Quantity;
 import org.eaticious.common.QuantityImpl;
 import org.eaticious.common.Unit;
-import org.eaticious.eaternity.EmissionFactor;
 import org.eaticious.greenlicious.RegionSpecification.Landscape;
 import org.eaticious.greenlicious.vessels.ElectricTrainSpecification.TrainModel;
 
@@ -23,20 +22,20 @@ public class ElectricTrain implements Vessel {
 		this.specs = specs;
 	}
 
-	public Quantity getFuelConsumption(Landscape landscape, TransportClass tc) {
-		Quantity result = new QuantityImpl();
+	public Quantity getFuelConsumption(final Landscape landscape, final TransportClass tc) {
+		final Quantity result = new QuantityImpl();
 		result.setUnit(Unit.KILOWATTHOUR);
 		
-		double lsFactor = getLandscapeFactor(landscape);
-		double tcFactor = getTransportClassFactor(tc);
+		final double lsFactor = getLandscapeFactor(landscape);
+		final double tcFactor = getTransportClassFactor(tc);
 		
-		double value = 0.0012 * Math.pow(this.specs.getGTW(), -0.62) * lsFactor / tcFactor;
+		final double value = 0.0012 * Math.pow(this.specs.getGTW(), -0.62) * lsFactor / tcFactor;
 		result.setAmount(value);
 		
 		return result;
 	}
 
-	private static double getLandscapeFactor(Landscape landscape) {
+	private static double getLandscapeFactor(final Landscape landscape) {
 		double result;
 		switch (landscape) {
 		case FLAT:
@@ -54,7 +53,7 @@ public class ElectricTrain implements Vessel {
 		return result;
 	}
 
-	private static double getTransportClassFactor(TransportClass tc) {
+	private static double getTransportClassFactor(final TransportClass tc) {
 		double result;
 		switch (tc) {
 		case BULK:

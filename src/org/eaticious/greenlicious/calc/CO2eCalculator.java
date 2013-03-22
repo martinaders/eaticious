@@ -14,27 +14,27 @@ import org.eaticious.greenlicious.vessels.Vessel;
 
 public interface CO2eCalculator {
 	
-	public CO2ePrint getFoodProductionValue(FoodProduct FoodProduct, Region producer, Date date);
+	CO2ePrint getFoodProductionValue(FoodProduct product, Region producer, Date date);
 	
-	public CO2ePrint getFoodProductionValue(FoodProduct FoodProduct, Region producer, Date date, Quantity amount);
+	CO2ePrint getFoodProductionValue(FoodProduct product, Region producer, Date date, Quantity amount);
 	
-	public CO2ePrint getTransportValue(FoodProduct FoodProduct, Region consumer_region);
+	CO2ePrint getTransportValue(FoodProduct product, Region consumerRegion);
 	
-	public CO2ePrint getTransportValue(FoodProduct FoodProduct, Region consumer_region, Quantity amount);
+	CO2ePrint getTransportValue(FoodProduct product, Region consumerRegion, Quantity amount);
 	
-	public CO2ePrint getTransportValue(FoodProduct FoodProduct, Vessel vessel, Integer distance);
+	CO2ePrint getTransportValue(FoodProduct product, Vessel vessel, Integer distance);
 	
-	public CO2ePrint getTransportValue(FoodProduct FoodProduct, Vessel vessel, Integer distance, Quantity amount);
+	CO2ePrint getTransportValue(FoodProduct product, Vessel vessel, Integer distance, Quantity amount);
 	
-	public CO2ePrint getCoolingValue(FoodProduct FoodProduct, CoolingType type);
+	CO2ePrint getCoolingValue(FoodProduct product, CoolingType type);
 	
-	public CO2ePrint getShoppingValue(Shoppinglist list, Vessel vessel);
+	CO2ePrint getShoppingValue(Shoppinglist list, Vessel vessel);
 	
-	public CO2ePrint getCookingValue(Recipe recipe, Region consumer_region, Date date);
+	CO2ePrint getCookingValue(Recipe recipe, Region consumerRegion, Date date);
 		
-	public CO2ePrint getRecipeValue(Recipe recipe, Region user_region, Date date);
+	CO2ePrint getRecipeValue(Recipe recipe, Region userRegion, Date date);
 	
-	public CO2ePrint getRecipeValue(Recipe recipe, Region user_region, Date date, Integer servings);
+	CO2ePrint getRecipeValue(Recipe recipe, Region userRegion, Date date, Integer servings);
 	
 	
 

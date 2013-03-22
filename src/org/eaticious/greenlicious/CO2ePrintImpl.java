@@ -9,14 +9,15 @@ public class CO2ePrintImpl extends ArrayList<CO2eSample> implements CO2ePrint {
 	
 	private Unit unit;
 	
-	public CO2ePrintImpl(Unit unit){
+	public CO2ePrintImpl(final Unit unit){
+		super();
 		this.unit = unit;
 	}
 
 	@Override
 	public Double getMeanValue() {
 		Double result = 0.0;
-		for(CO2eSample sample : this){
+		for(final CO2eSample sample : this){
 			result += sample.getMeanValue();
 		}
 		return result;
@@ -25,7 +26,7 @@ public class CO2ePrintImpl extends ArrayList<CO2eSample> implements CO2ePrint {
 	@Override
 	public Double getStdError() {
 		Double result = 0.0;
-		for(CO2eSample sample : this){
+		for(final CO2eSample sample : this){
 			result += sample.getStdError();
 		}
 		return result;
@@ -34,7 +35,7 @@ public class CO2ePrintImpl extends ArrayList<CO2eSample> implements CO2ePrint {
 	@Override
 	public Double getMinimumValue() {
 		Double result = 0.0;
-		for(CO2eSample sample : this){
+		for(final CO2eSample sample : this){
 			result += sample.getMinimumValue();
 		}
 		return result;
@@ -43,7 +44,7 @@ public class CO2ePrintImpl extends ArrayList<CO2eSample> implements CO2ePrint {
 	@Override
 	public Double getMaximumValue() {
 		Double result = 0.0;
-		for(CO2eSample sample : this){
+		for(final CO2eSample sample : this){
 			result += sample.getMaximumValue();
 		}
 		return result;
@@ -55,11 +56,11 @@ public class CO2ePrintImpl extends ArrayList<CO2eSample> implements CO2ePrint {
 	}
 
 	@Override
-	public boolean add(CO2eSample object){
-		if(!object.getUnit().equals(this.unit)){
+	public boolean add(final CO2eSample sample){
+		if(!sample.getUnit().equals(this.unit)){
 			throw new IllegalArgumentException("Sample has a different unit than this print (needs " + this.getUnit() +")");
 		}
-		return super.add(object);
+		return super.add(sample);
 	}
 
 	@Override
@@ -68,7 +69,7 @@ public class CO2ePrintImpl extends ArrayList<CO2eSample> implements CO2ePrint {
 	}
 
 	@Override
-	public void remove(CO2eSample sample) {
+	public void remove(final CO2eSample sample) {
 		super.remove(sample);
 	}
 

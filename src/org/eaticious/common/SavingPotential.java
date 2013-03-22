@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 public interface SavingPotential extends Serializable, Cloneable{
 
-	public String getPotential();
+	String getPotential();
 	
-	public Double getNumber();
+	Double getNumber();
 }

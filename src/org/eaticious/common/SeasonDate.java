@@ -17,38 +17,38 @@ public interface SeasonDate extends Serializable {
 	 * Format: "dd.MM"
 	 * @return false if argument was invalid
 	 */
-	public boolean setDate(String date);
+	boolean setDate(String date);
 
 	/**
 	 * @return false if date = null
 	 */
-	public boolean setDate(Date date);
+	boolean setDate(Date date);
 
 	/**
 	 * 
 	 * @return month, 1 for January, 12 for December, 0 if not initialized
 	 */
-	public int getMonth();
+	int getMonth();
 	
 	/**
 	 * 
 	 * @return day, 1 for fist day of month, 31 for last, 0 if not initialized
 	 */
-	public int getDay();
+	int getDay();
 	
 	/**
 	 * if the dates are same, after returns true as well (still in season)
 	 * @param other date to compare with
 	 * @return true if this is after other, false otherwise
 	 */
-	public boolean after(SeasonDate other);
+	boolean after(SeasonDate other);
 
 	/**
 	 * if the dates are same day, before() returns true as well (still in season)
 	 * @param other date to compare with
 	 * @return true if this is before other, false otherwise
 	 */
-	public boolean before(SeasonDate other);
+	boolean before(SeasonDate other);
 
 }
 

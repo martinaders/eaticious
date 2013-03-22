@@ -47,7 +47,7 @@ public enum Unit {
 	 * @param dimension The dimension used (hardcoded as String)
 	 * @param factor The conversion factor to convert into the base unit
 	 */
-	private Unit(PhysicalDimension dimension, Double factor){
+	private Unit(final PhysicalDimension dimension, final Double factor){
 		this.dimension = dimension;
 		this.factor = factor;
 	}
@@ -64,7 +64,7 @@ public enum Unit {
 	 * @param unit The unit to convert to
 	 * @return true if the target unit has the same dimension as this unit and UnitDimension is NOT OTHER, false otherwise
 	 */
-	public boolean isConvertable(Unit unit) {
+	public boolean isConvertable(final Unit unit) {
 		return this.dimension.equals(unit.getDimension()) && !this.dimension.equals(PhysicalDimension.OTHER);
 	}
 
@@ -75,7 +75,7 @@ public enum Unit {
 	 * @return The value (amount) for the target unit
 	 * @throws IllegalArgumentException if units (source / target) are not convertable
 	 */
-	public Double convert(Double value, Unit targetUnit) throws IllegalArgumentException {
+	public Double convert(final Double value, final Unit targetUnit) throws IllegalArgumentException {
 		if(!this.isConvertable(targetUnit)){
 			throw new IllegalArgumentException("Cannot convert " + targetUnit + " into " + this + " since the describe different dimensions of our world.");
 		}
@@ -88,7 +88,7 @@ public enum Unit {
 	 * @return The factor used to convert into the targetUnit
 	 * @throws IllegalArgumentException thrown if units are not convertable
 	 */
-	public Double getConversionFactor(Unit targetUnit) throws IllegalArgumentException{
+	public Double getConversionFactor(final Unit targetUnit) throws IllegalArgumentException{
 		if(!this.isConvertable(targetUnit)){
 			throw new IllegalArgumentException("Cannot convert " + targetUnit + " into " + this + " since the describe different dimensions of our world.");
 		}

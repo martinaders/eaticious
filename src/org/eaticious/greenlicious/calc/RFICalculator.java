@@ -6,7 +6,9 @@ import java.util.TreeMap;
 import org.eaticious.common.Quantity;
 import org.eaticious.common.Unit;
 
-public class RFICalculator {
+public enum RFICalculator {
+	
+	INSTANCE;
 
 	private static Map<Double, Double> rfiValues;
 
@@ -45,7 +47,7 @@ public class RFICalculator {
 			Double maxKey = null;
 
 			for (Double key : rfiValues.keySet()) {
-				double diff = calcDistance - key;
+				final double diff = calcDistance - key;
 				if (diff < 0) {
 					// Since TreeMap is sorted by keys and the actual key is bigger than the distance, maxKey is found
 					// and the loop will be stopped
@@ -65,8 +67,8 @@ public class RFICalculator {
 				result = rfiValues.get(minKey);
 			} else {
 				// linear interpolation
-				double minValue = rfiValues.get(minKey);
-				double steep = (rfiValues.get(maxKey) - minValue) / (maxKey - minKey);
+				final double minValue = rfiValues.get(minKey);
+				final double steep = (rfiValues.get(maxKey) - minValue) / (maxKey - minKey);
 				result = minValue + steep * (calcDistance - minKey);
 			}
 		}

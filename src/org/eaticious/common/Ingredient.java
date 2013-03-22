@@ -9,25 +9,25 @@ public interface Ingredient extends Serializable {
 	 * 
 	 * @return The food product from which this ingredient is derived
 	 */
-	public FoodProduct getFoodProduct();
+	FoodProduct getFoodProduct();
 	
 	/**
 	 * 
 	 * @return The Amount of this Ingredient needed in the associated Recipe, the original unit is preserved
 	 */
-	public Quantity getAmount();
+	Quantity getAmount();
 	
 	/**
 	 * 
-	 * @return The normalized Amount of this Ingredient needed in the associated Recipe, the Amount is standardized in grams / milliliters
+	 * @return The normalized Amount of this Ingredient needed in the associated Recipe.
 	 */
-	public Quantity getNormalizedAmount();
+	Quantity getNormalizedAmount();
 	
 	/**
 	 * 
 	 * @return A Map holding amounts of nutrients per serving of the associated recipe
 	 */
-	public Map<Nutrient, Quantity> getNutritionData();
+	Map<Nutrient, Quantity> getNutritionData();
 
 	
 }

@@ -2,11 +2,8 @@ package org.eaticious.greenlicious.vessels;
 
 import static org.junit.Assert.*;
 
-import java.util.Collections;
 import java.util.HashMap;
 
-import org.eaticious.common.QuantityImpl;
-import org.eaticious.common.Unit;
 import org.eaticious.greenlicious.vessels.AirplaneSpecification.AirplaneSize;
 import org.eaticious.greenlicious.vessels.AirplaneSpecification.StandardModel;
 import org.junit.Before;
@@ -56,9 +53,9 @@ public class AirplaneSpecificationTest {
 		spec.addConsumptionEntry(10d, 100d);
 		spec.addConsumptionEntry(10d, 150d);
 		spec.addConsumptionEntry(20d, 200d);
-		assertTrue(2 == spec.getConsumptionProfile().size());
-		assertTrue(150d == spec.getConsumptionProfile().get(10d));
-		assertTrue(200d == spec.getConsumptionProfile().get(20d));
+		assertEquals(2, spec.getConsumptionProfile().size(), 0d);
+		assertEquals(150d, spec.getConsumptionProfile().get(10d), 0d);
+		assertEquals(200d, spec.getConsumptionProfile().get(20d), 0d);
 		
 	}
 

@@ -9,15 +9,11 @@ public class CO2eSampleImpl implements CO2eSample {
 	
 	private Double stdError;
 	
-	private Double minValue;
+	private Double minimumValue;
 	
-	private Double maxValue;
+	private Double maximumValue;
 	
 	private Unit unit;
-	
-	public CO2eSampleImpl(Unit unit){
-		this.unit = Unit.KILOGRAM;
-	}
 
 	@Override
 	public Double getMeanValue() {
@@ -31,12 +27,12 @@ public class CO2eSampleImpl implements CO2eSample {
 
 	@Override
 	public Double getMinimumValue() {
-		return this.minValue;
+		return this.minimumValue;
 	}
 
 	@Override
 	public Double getMaximumValue() {
-		return this.maxValue;
+		return this.maximumValue;
 	}
 
 	@Override
@@ -45,12 +41,24 @@ public class CO2eSampleImpl implements CO2eSample {
 	}
 
 	@Override
-	public void setMeanValue(Double co2e) {
-		this.maxValue = co2e;
+	public void setMeanValue(final Double co2e) {
+		this.maximumValue = co2e;
+	}
+	
+	public void setStdError(final Double error) {
+		this.stdError = error;
+	}
+
+	public void setMinimumValue(final Double value) {
+		this.minimumValue = value;
+	}
+
+	public void setMaximumValue(final Double value) {
+		this.maximumValue = value;
 	}
 
 	@Override
-	public void setUnit(Unit unit) {
+	public void setUnit(final Unit unit) {
 		this.unit = unit;
 	}
 }

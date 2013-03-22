@@ -10,37 +10,37 @@ import org.eaticious.eaternity.IngredientSpecification;
 
 public interface Dish extends Serializable {
 	
-	public Recipe getRecipe();
+	Recipe getRecipe();
 	
-	public Integer getServings();
+	Integer getServings();
 	
-	public Date getCookingDate();
+	Date getCookingDate();
 	
 	// getUser()
 	
 	// eaternity specific
 	
-	public String getLocation();
+	String getLocation();
 	
-	public List<IngredientSpecification> getIngredients(Integer servings);
+	List<IngredientSpecification> getIngredients(Integer servings);
 	
-	public Long getUserID();
+	Long getUserID();
 	
-	public Long getKitchenId();
+	Long getKitchenId();
 	
 	// make Recipe a member field for not persisting it as well seperatly
 	
-	public EmissionFactor getEmissionFactor();
+	EmissionFactor getEmissionFactor();
 	
 	/**
 	 * 
 	 * @return false if the Ingredients are not specified and thus weighted averages are taken
 	 */
-	public boolean isSpecified();
+	boolean isSpecified();
 	
 	/**
 	 * depends on isSpecified which values is returned
 	 * @return
 	 */
-	public Double getCO2Value();
+	Double getCO2Value();
 }

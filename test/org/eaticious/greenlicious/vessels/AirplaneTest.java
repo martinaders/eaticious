@@ -37,25 +37,25 @@ public class AirplaneTest {
 
 		// matching defined value
 		distance.setAmount(100d);
-		Double expected = plane.getFuelConsumption(distance).getAmount() * Airplane.KEROSENE_TO_CO2E_FACTOR;
+		Double expected = plane.getFuelConsumption(distance).getAmount() * Airplane.KEROSENE_FACTOR;
 		Double actual = plane.getTotalCO2e(distance, false).getAmount();
 		assertTrue("Expected: " + expected + " - Actual: " + actual, expected.equals(actual));
 
 		// in between values
 		distance.setAmount(147.9);
-		expected = plane.getFuelConsumption(distance).getAmount() * Airplane.KEROSENE_TO_CO2E_FACTOR;
+		expected = plane.getFuelConsumption(distance).getAmount() * Airplane.KEROSENE_FACTOR;
 		actual = plane.getTotalCO2e(distance, false).getAmount();
 		assertTrue("Expected: " + expected + " - Actual: " + actual, expected.equals(actual));
 
 		// 25% of lowest value
 		distance.setAmount(2.5);
-		expected = plane.getFuelConsumption(distance).getAmount() * Airplane.KEROSENE_TO_CO2E_FACTOR;
+		expected = plane.getFuelConsumption(distance).getAmount() * Airplane.KEROSENE_FACTOR;
 		actual = plane.getTotalCO2e(distance, false).getAmount();
 		assertTrue("Expected: " + expected + " - Actual: " + actual, expected.equals(actual));
 
 		// 100% of highest value
 		distance.setAmount(200.0);
-		expected = plane.getFuelConsumption(distance).getAmount() * Airplane.KEROSENE_TO_CO2E_FACTOR;
+		expected = plane.getFuelConsumption(distance).getAmount() * Airplane.KEROSENE_FACTOR;
 		actual = plane.getTotalCO2e(distance, false).getAmount();
 		assertTrue("Expected: " + expected + " - Actual: " + actual, expected.equals(actual));
 	}

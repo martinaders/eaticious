@@ -13,7 +13,7 @@ public enum PhysicalDimension {
 	 * 
 	 * @param baseunit The standard Unit for the PhysicalDimension to be constructed
 	 */
-	private PhysicalDimension(Unit baseunit){
+	private PhysicalDimension(final Unit baseunit){
 		this.baseUnit = baseunit;
 	}
 	

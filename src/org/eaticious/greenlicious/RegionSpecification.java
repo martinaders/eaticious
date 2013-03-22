@@ -16,13 +16,13 @@ public interface RegionSpecification {
 	 * 
 	 * @return The standard gross ton weight of train wagons in this region
 	 */
-	public int getTrainGTW();
+	int getTrainGTW();
 
 	/**
 	 * Returns the typical Landscape of this Region
 	 * 
 	 * @return The typical Landscape of this Region or Lanscape.NONE if unknown
 	 */
-	public Landscape getLandscape();
+	Landscape getLandscape();
 
 }

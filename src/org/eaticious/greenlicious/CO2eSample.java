@@ -8,34 +8,34 @@ public interface CO2eSample{
 	 * 
 	 * @return The mean CO2e value for the whole process chain
 	 */
-	public Double getMeanValue();
+	Double getMeanValue();
 	
 	/**
 	 * 
 	 * @return The standard error for the mean CO2e value
 	 */
-	public Double getStdError();
+	Double getStdError();
 	
 	/**
 	 * 
 	 * @return The minimal CO2e value for the whole process chain
 	 */
-	public Double getMinimumValue();
+	Double getMinimumValue();
 	
 	/**
 	 * 
 	 * @return The maximum CO2e value for the whole process chain
 	 */
-	public Double getMaximumValue();
+	Double getMaximumValue();
 	
 	/**
 	 * 
 	 * @return The unit used for this CO2ePrint
 	 */
-	public Unit getUnit();
+	Unit getUnit();
 
-	public void setMeanValue(Double co2e);
+	void setMeanValue(Double co2e);
 
-	public void setUnit(Unit u);
+	void setUnit(Unit unit);
 
 }

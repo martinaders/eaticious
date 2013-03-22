@@ -14,17 +14,20 @@ public class Production implements Serializable, Cloneable{
 	public String symbol;
 	public Double factor;
 	
+	/**
+	 * What is this constructor for? 
+	 */
 	private Production()
 	{
 		
 	}
 	
-	public Production(Production toClone) {
+	public Production(final Production toClone) {
 		symbol = new String(toClone.symbol);
 		factor = new Double(toClone.factor);
 	}
 	
-    public Production(String symbol) {
+    public Production(final String symbol) {
 		this.symbol = symbol;
 	}
 }

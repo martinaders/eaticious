@@ -10,9 +10,9 @@ public class QuantityImpl implements Quantity {
 	/**
 	 * Empty Constructor needed for objectify
 	 */
-	public QuantityImpl() {}
+	public QuantityImpl() { /* needed for objectify */ }
 	
-	public QuantityImpl(Double amount, Unit unit){
+	public QuantityImpl(final Double amount, final Unit unit){
 		this.unit = unit;
 		this.amount = amount;
 	}
@@ -20,9 +20,8 @@ public class QuantityImpl implements Quantity {
 	/**
 	 * Copy constructor
 	 */
-	public QuantityImpl(Quantity other) {
-		unit = other.getUnit();
-		amount = new Double(amount);
+	public QuantityImpl(final Quantity other) {
+		this(new Double(other.getAmount()), other.getUnit());
 	}
 
 	@Override
@@ -36,18 +35,17 @@ public class QuantityImpl implements Quantity {
 	}
 
 	@Override
-	public Quantity convert(Unit unit) {
-		Quantity result = new QuantityImpl(this.unit.convert(this.getAmount(), unit), unit);
-		return result;
+	public Quantity convert(final Unit unit) {
+		return new QuantityImpl(this.unit.convert(this.getAmount(), unit), unit);
 	}
 
 	@Override
-	public void setAmount(double amount) {
+	public void setAmount(final double amount) {
 		this.amount = amount;
 	}
 
 	@Override
-	public void setUnit(Unit unit) {
+	public void setUnit(final Unit unit) {
 		this.unit = unit;
 	}
 

@@ -90,7 +90,7 @@ public class TruckTest {
 	}
 	
 	@Test (expected=IllegalArgumentException.class)
-	public void testGetCO2e_Exception() {
+	public void testGetCO2eException() {
 		Quantity payload = new QuantityImpl(12d, Unit.LITRE);
 		truck40000.getCO2e(payload, 12d, 0.5, 0.5);
 	}
@@ -120,7 +120,7 @@ public class TruckTest {
 	}
 	
 	@Test (expected = IllegalArgumentException.class)
-	public void testGetCO2ePerKM_Exception() {
+	public void testGetCO2ePerKMException() {
 		Quantity payload = new QuantityImpl(753d, Unit.CENTILITRE);
 		truck40000.getCO2ePerKM(payload, 0.8, 0.5);
 	}

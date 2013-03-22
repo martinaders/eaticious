@@ -4,16 +4,16 @@ import java.io.Serializable;
 
 public interface Season extends Serializable {
 	
-	public SeasonDate getBeginning();
+	SeasonDate getBeginning();
 	
-	public void setBeginning(SeasonDate beginning);
+	void setBeginning(SeasonDate beginning);
 	
-	public SeasonDate getEnd();
+	SeasonDate getEnd();
 	
-	public void setEnd(SeasonDate end);
+	void setEnd(SeasonDate end);
 	
-	public SeasonType getSeasonType();
+	SeasonType getSeasonType();
 	
-	public void setSeasonType(SeasonType type);
+	void setSeasonType(SeasonType type);
 
 }

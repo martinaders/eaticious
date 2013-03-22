@@ -18,7 +18,7 @@ public class RFICalculatorTest {
 	}
 
 	@Test
-	public void testGetRFIFactor_standard() {
+	public void testGetRFIFactorStandard() {
 		// lower end values, no share of flight near stratosphere, ECOTransIT values
 		distance.setAmount(499.0);
 		assertTrue(1d == RFICalculator.getRFIFactor(distance));
@@ -51,7 +51,7 @@ public class RFICalculatorTest {
 	}
 	
 	@Test
-	public void testGetRFIFactor_interpolated() {
+	public void testGetRFIFactorInterpolated() {
 		distance.setAmount(563d);
 		assertTrue(1.20412 == RFICalculator.getRFIFactor(distance));
 		distance.setAmount(2783d);
@@ -61,13 +61,13 @@ public class RFICalculatorTest {
 	}
 	
 	@Test (expected = IllegalArgumentException.class)
-	public void testGetRFIFactorException_zero() {
+	public void testGetRFIFactorExceptionZero() {
 		distance.setAmount(0d);
 		RFICalculator.getRFIFactor(distance);
 	}
 	
 	@Test (expected = IllegalArgumentException.class)
-	public void testGetRFIFactorException_negative() {
+	public void testGetRFIFactorExceptionNegative() {
 		distance.setAmount(-7d);
 		RFICalculator.getRFIFactor(distance);
 	}

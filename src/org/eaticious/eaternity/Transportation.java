@@ -14,21 +14,24 @@ public class Transportation implements Serializable {
     public String symbol;
 	public Double factor;
     
+	/**
+	 * What is this constructor for?
+	 */
     private Transportation()
     {
     	
     }
     
-    public Transportation(Transportation toClone) {
+    public Transportation(final Transportation toClone) {
 		symbol = new String(toClone.symbol);
 		factor = new Double(toClone.factor);
 	}
 
-    public Transportation(String symbol) {
+    public Transportation(final String symbol) {
     	this.symbol = symbol;
 	}
     
-    public Transportation(String symbol, Double factor) {
+    public Transportation(final String symbol, final Double factor) {
     	this.symbol = symbol;
     	this.factor = factor;
 	}
