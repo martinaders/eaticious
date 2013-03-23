@@ -31,7 +31,9 @@ public enum Unit {
 	KILOCALORIES(PhysicalDimension.ENERGY, 859.84522785899),
 	BRITISH_THERMAL_UNIT(PhysicalDimension.ENERGY, 3412.1416331279),
 	
-	CO2E(PhysicalDimension.WARMING_POTENTIAL, 1d), CO2(PhysicalDimension.WARMING_POTENTIAL, 1d), CH4(PhysicalDimension.WARMING_POTENTIAL, 25d), N2O(PhysicalDimension.WARMING_POTENTIAL, 298d),  
+	CO2E(PhysicalDimension.WARMING_POTENTIAL, 1d), CO2(PhysicalDimension.WARMING_POTENTIAL, 1d), CH4(PhysicalDimension.WARMING_POTENTIAL, 25d), N2O(PhysicalDimension.WARMING_POTENTIAL, 298d),
+	
+	KG_CO2E(PhysicalDimension.CO2E, 1d), G_CO2E(PhysicalDimension.CO2E, 1000d), T_CO2E(PhysicalDimension.CO2E, 0.001),
 	
 	// these are not really physical units, just used in recipes. We might want to handle them differently
 	PIECE(PhysicalDimension.OTHER, 0d), SLICE(PhysicalDimension.OTHER, 0d), NONE(PhysicalDimension.OTHER, 0d);
