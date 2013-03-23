@@ -34,6 +34,25 @@ public class ElectricTrain implements Vessel {
 		
 		return result;
 	}
+	
+	public Quantity getCO2ePerKGKM(Double energyMixFactor, Landscape landscape, TransportClass tc) {
+		Double amount = this.getFuelConsumption(landscape, tc).getAmount() * energyMixFactor;
+		return new QuantityImpl(amount, Unit.CO2E);
+	}
+	
+	public Quantity getCO2ePerKG(Quantity distance, Double energyMixFactor, Landscape landscape, TransportClass tc) {
+		Double calcDist = distance.convert(Unit.KILOMETER).getAmount();
+		Double amount = this.getFuelConsumption(landscape, tc).getAmount() * energyMixFactor * calcDist;
+		return new QuantityImpl(amount, Unit.CO2E);
+	}
+	
+	public Quantity getCO2e(Quantity weight, Quantity distance, Double energyMixFactor, Landscape landscape,
+			TransportClass tc) {
+		Double calcDist = distance.convert(Unit.KILOMETER).getAmount();
+		Double calcWeight = weight.convert(Unit.KILOGRAM).getAmount();
+		Double amount = this.getFuelConsumption(landscape, tc).getAmount() * energyMixFactor * calcDist * calcWeight;
+		return new QuantityImpl(amount, Unit.CO2E);
+	}
 
 	private static double getLandscapeFactor(final Landscape landscape) {
 		double result;
@@ -70,4 +89,10 @@ public class ElectricTrain implements Vessel {
 		}
 		return result;
 	}
+
+	
+
+	
+
+
 }
