@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import org.eaticious.common.EmissionFactor;
 import org.eaticious.common.Recipe;
-import org.eaticious.eaternity.EmissionFactor;
 import org.eaticious.eaternity.IngredientSpecification;
 
 public interface Dish extends Serializable {

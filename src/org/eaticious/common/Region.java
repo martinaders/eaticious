@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Locale;
 
-import org.eaticious.eaternity.EmissionFactor;
 import org.eaticious.greenlicious.RegionSpecification;
 
 public interface Region extends Serializable {

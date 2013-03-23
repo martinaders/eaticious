@@ -1,4 +1,4 @@
 eclipse.preferences.version=1
-jarsExcludedFromWebInfLib=
+jarsExcludedFromWebInfLib=C\:/Users/Sven Peetz/development/_libs/java/mockito-all-1.9.5-rc1.jar|C\:/Users/Sven Peetz/development/_libs/java/mockito-all-1.9.5.jar
 warSrcDir=war
 warSrcDirIsOutput=true

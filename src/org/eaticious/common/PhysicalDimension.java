@@ -2,7 +2,7 @@ package org.eaticious.common;
 
 public enum PhysicalDimension {
 
-	MASS(Unit.KILOGRAM), VOLUME(Unit.LITRE), DISTANCE(Unit.KILOMETER), ENERGY(Unit.KILOWATTHOUR), OTHER(Unit.NONE), GHG(Unit.CO2E);
+	MASS(Unit.KILOGRAM), VOLUME(Unit.LITRE), DISTANCE(Unit.KILOMETER), ENERGY(Unit.KILOWATTHOUR), OTHER(Unit.NONE), WARMING_POTENTIAL(Unit.CO2E);
 	
 	/**
 	 * The standard Unit for this PhysicalDimension of this
