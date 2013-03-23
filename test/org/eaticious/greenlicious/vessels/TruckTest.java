@@ -22,72 +22,71 @@ public class TruckTest {
 	}
 
 	@Test
-	public void testGetTotalCO2e() {
-		Double expected;
-		Double distance;
-		Double loadFactor;
-		Double emptyTripFactor;
+	public void testGetTotalCO2eBigTruck() {
+		Double distance  = 6325d;
+		Double loadFactor = 0.75;
+		Double emptyTripFactor = 0.5;
 
-		// setting parameters
-		distance = 6325d;
-		loadFactor = 0.75;
-		emptyTripFactor = 0.5;
-
-		expected = truck40000.getTotalCO2ePerKM(loadFactor, emptyTripFactor).getAmount() * distance;
+		Double expected = truck40000.getTotalCO2ePerKM(loadFactor, emptyTripFactor).getAmount() * distance;
 		assertEquals(expected, truck40000.getTotalCO2e(distance, loadFactor, emptyTripFactor).getAmount());
+	}
+	
+	@Test
+	public void testGetTotalCO2eSmallTruck() {
+		Double distance  = 6325d;
+		Double loadFactor = 0.75;
+		Double emptyTripFactor = 0.5;
 
-		expected = truck7500.getTotalCO2ePerKM(loadFactor, emptyTripFactor).getAmount() * distance;
+		Double expected = truck7500.getTotalCO2ePerKM(loadFactor, emptyTripFactor).getAmount() * distance;
 		assertEquals(expected, truck7500.getTotalCO2e(distance, loadFactor, emptyTripFactor).getAmount());
 	}
 
 	@Test
-	public void testGetTotalCO2ePerKM() {
-
-		Double expected;
-		Double actual;
-		Double loadFactor;
-		Double emptyTripFactor;
-
-		// setting parameters & test
-		loadFactor = 0.75;
-		emptyTripFactor = 0.5;
+	public void testGetTotalCO2ePerKmBigTruck() {
+		Double loadFactor = 0.75;
+		Double emptyTripFactor = 0.5;
 
 		// test 1
-		expected = 1.120395; // taken from calculations in excel sheet / EcoTransit
-		actual = Math.round(truck40000.getTotalCO2ePerKM(loadFactor, emptyTripFactor).getAmount() * 1000000) / 1000000d;
+		Double expected = 1.120395; // taken from calculations in excel sheet / EcoTransit
+		Double actual = Math.round(truck40000.getTotalCO2ePerKM(loadFactor, emptyTripFactor).getAmount() * 1000000) / 1000000d;
 		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void testGetTotalCO2ePerKmSmallTruck() {
+		Double loadFactor = 0.75;
+		Double emptyTripFactor = 0.5;
 
-		// test 2
-		expected = 0.513358; // taken from calculations in excel sheet / EcoTransit
-		actual = Math.round(truck7500.getTotalCO2ePerKM(loadFactor, emptyTripFactor).getAmount() * 1000000) / 1000000d;
+		Double expected = 0.513358; // taken from calculations in excel sheet / EcoTransit
+		Double actual = Math.round(truck7500.getTotalCO2ePerKM(loadFactor, emptyTripFactor).getAmount() * 1000000) / 1000000d;
 		assertEquals(expected, actual);
 	}
 
 	@Test
-	public void testGetCO2e() {
-		Double expected;
-		Double actual;
-		Quantity payload;
-		Double distance;
-		Double loadFactor;
-		Double emptyTripFactor;
-		
-		loadFactor = 0.8;
-		emptyTripFactor = 0.4;
-		distance = 3819d;
-		payload = new QuantityImpl(12d, Unit.TON);
+	public void testGetCO2eBigTruck() {
+		Quantity payload = new QuantityImpl(12d, Unit.TON);;
+		Double distance  = 3819d;
+		Double loadFactor = 0.8;
+		Double emptyTripFactor  = 0.4;
 
-		expected = truck40000.getCO2ePerKM(payload, loadFactor, emptyTripFactor).getAmount() * distance;
-		actual = truck40000.getCO2e(payload, distance, loadFactor, emptyTripFactor).getAmount();
+		Double expected = truck40000.getCO2ePerKM(payload, loadFactor, emptyTripFactor).getAmount() * distance;
+		Double actual = truck40000.getCO2e(payload, distance, loadFactor, emptyTripFactor).getAmount();
 		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetCO2eSmallTruck() {
+		Quantity payload = new QuantityImpl(3d, Unit.TON);;
+		Double distance  = 3819d;
+		Double loadFactor = 0.8;
+		Double emptyTripFactor  = 0.4;
 		
-		payload.setAmount(3d);
-		
-		expected = truck7500.getCO2ePerKM(payload, loadFactor, emptyTripFactor).getAmount() * distance;
-		actual = truck7500.getCO2e(payload, distance, loadFactor, emptyTripFactor).getAmount();
+		Double expected = truck7500.getCO2ePerKM(payload, loadFactor, emptyTripFactor).getAmount() * distance;
+		Double actual = truck7500.getCO2e(payload, distance, loadFactor, emptyTripFactor).getAmount();
 		assertEquals(expected, actual);
 
 	}
+
 	
 	@Test (expected=IllegalArgumentException.class)
 	public void testGetCO2eException() {
@@ -96,25 +95,24 @@ public class TruckTest {
 	}
 
 	@Test
-	public void testGetCO2ePerKM() {
-		Double expected;
-		Double actual;
-		Quantity payload;
-		Double loadFactor;
-		Double emptyTripFactor;
-		
-		loadFactor = 0.8;
-		emptyTripFactor = 0.4;
-		payload = new QuantityImpl(753d, Unit.KILOGRAM);
+	public void testGetCO2ePerKmBigTruck() {
+		Quantity payload = new QuantityImpl(753d, Unit.KILOGRAM);;
+		Double loadFactor = 0.8;
+		Double emptyTripFactor = 0.4;
 
-		expected = 0.041956;
-		actual = Math.round(truck40000.getCO2ePerKM(payload, loadFactor, emptyTripFactor).getAmount() * 1000000) / 1000000d;
+		Double expected = 0.041956;
+		Double actual = Math.round(truck40000.getCO2ePerKM(payload, loadFactor, emptyTripFactor).getAmount() * 1000000) / 1000000d;
 		assertEquals(expected, actual);
-		
-		payload.setAmount(512d);
-		
-		expected = 0.094556;
-		actual = Math.round(truck7500.getCO2ePerKM(payload, loadFactor, emptyTripFactor).getAmount() * 1000000) / 1000000d;
+	}
+	
+	@Test
+	public void testGetCO2ePerKmSmallTruck() {
+		Quantity payload = new QuantityImpl(512d, Unit.KILOGRAM);;
+		Double loadFactor = 0.8;
+		Double emptyTripFactor = 0.4;
+
+		Double expected = 0.094556;
+		Double actual = Math.round(truck7500.getCO2ePerKM(payload, loadFactor, emptyTripFactor).getAmount() * 1000000) / 1000000d;
 		assertEquals(expected, actual);
 
 	}
@@ -126,22 +124,28 @@ public class TruckTest {
 	}
 	
 	@Test
-	public void testGetFuelConsumption() {
-		Double expected;
-		Double actual;
-		Double loadFactor;
-		Double emptyTripFactor;
-		
-		loadFactor = 0.8;
-		emptyTripFactor = 0.4;
-		expected = 43.3;
-		actual = truck40000.getFuelConsumption(loadFactor, emptyTripFactor).getAmount();
+	public void testGetFuelConsumptionBigTruck() {
+		Double loadFactor = 0.8;
+		Double emptyTripFactor = 0.4;
+
+		Double expected = 43.3;
+		Double actual = truck40000.getFuelConsumption(loadFactor, emptyTripFactor).getAmount();
 		assertEquals(expected, actual);
 		
 		loadFactor = 0.4;
 		emptyTripFactor = 0.7;
 		expected = 18.66;
 		actual = Math.round(truck7500.getFuelConsumption(loadFactor, emptyTripFactor).getAmount() * 100) / 100.0;
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void testGetFuelConsumptionSmallTruck() {
+		Double loadFactor = 0.4;
+		Double emptyTripFactor = 0.7;
+
+		Double expected = 18.66;
+		Double actual = Math.round(truck7500.getFuelConsumption(loadFactor, emptyTripFactor).getAmount() * 100) / 100.0;
 		assertEquals(expected, actual);
 	}
 

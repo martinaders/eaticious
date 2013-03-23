@@ -18,46 +18,93 @@ public class RFICalculatorTest {
 	}
 
 	@Test
-	public void testGetRFIFactorStandard() {
+	public void testGetRFIFactorStandardShort1() {
 		// lower end values, no share of flight near stratosphere, ECOTransIT values
 		distance.setAmount(499.0);
-		assertTrue(1d == RFICalculator.getRFIFactor(distance));
-		distance.setAmount(500d);
-		assertTrue(1d == RFICalculator.getRFIFactor(distance));
-		distance.setAmount(501d);
-		assertFalse(1d == RFICalculator.getRFIFactor(distance));
-		
-		// increasing share of flight near stratosphere, ECOTransIT values
-		distance.setAmount(749d);
-		assertFalse(1.81 == RFICalculator.getRFIFactor(distance));
-		distance.setAmount(750d);
-		assertTrue(1.81 == RFICalculator.getRFIFactor(distance));
-		distance.setAmount(751d);
-		assertFalse(1.81 == RFICalculator.getRFIFactor(distance));
-		distance.setAmount(1000d);
-		assertTrue(2.18 == RFICalculator.getRFIFactor(distance));
-		distance.setAmount(2000d);
-		assertTrue(2.52 == RFICalculator.getRFIFactor(distance));
-		distance.setAmount(4000d);
-		assertTrue(2.73 == RFICalculator.getRFIFactor(distance));
-		
-		// upper end values, all the flight near stratosphere, ECOTransIT values
-		distance.setAmount(9999d);
-		assertFalse(2.87 == RFICalculator.getRFIFactor(distance));
-		distance.setAmount(10000d);
-		assertTrue(2.87 == RFICalculator.getRFIFactor(distance));
-		distance.setAmount(200000d);
-		assertTrue(2.87 == RFICalculator.getRFIFactor(distance));
+		assertEquals(1d, RFICalculator.getRFIFactor(distance), 0d);
 	}
 	
 	@Test
-	public void testGetRFIFactorInterpolated() {
+	public void testGetRFIFactorStandardShort2() {
+		distance.setAmount(500d);
+		assertEquals(1d, RFICalculator.getRFIFactor(distance), 0d);
+	}
+	
+	@Test
+	public void testGetRFIFactorStandardShort3() {
+		distance.setAmount(501d);
+		assertTrue(1d < RFICalculator.getRFIFactor(distance));
+	}
+		
+	@Test
+	public void testGetRFIFactorStandardMidValue1() {
+		distance.setAmount(749d);
+		assertTrue(1.81 > RFICalculator.getRFIFactor(distance));
+	}
+	
+	@Test
+	public void testGetRFIFactorStandardMidValue2() {
+		distance.setAmount(750d);
+		assertEquals(1.81, RFICalculator.getRFIFactor(distance), 0d);
+	}
+	
+	@Test
+	public void testGetRFIFactorStandardMidValue3() {
+		distance.setAmount(751d);
+		assertTrue(1.81 < RFICalculator.getRFIFactor(distance));
+	}
+	
+	@Test
+	public void testGetRFIFactorStandardMidValue4() {
+		distance.setAmount(1000d);
+		assertEquals(2.18, RFICalculator.getRFIFactor(distance), 0d);
+	}
+	
+	@Test
+	public void testGetRFIFactorStandardMidValue5() {
+		distance.setAmount(2000d);
+		assertEquals(2.52, RFICalculator.getRFIFactor(distance), 0d);
+	}
+	
+	@Test
+	public void testGetRFIFactorStandardMidValue6() {
+		distance.setAmount(4000d);
+		assertEquals(2.73, RFICalculator.getRFIFactor(distance), 0d);
+	}
+	
+	@Test
+	public void testGetRFIFactorStandardHighValue1() {
+		distance.setAmount(9999d);
+		assertTrue(2.87 > RFICalculator.getRFIFactor(distance));
+	}
+	
+	@Test
+	public void testGetRFIFactorStandardHighValue2() {
+		distance.setAmount(10000d);
+		assertEquals(2.87, RFICalculator.getRFIFactor(distance), 0d);
+	}
+	@Test
+	public void testGetRFIFactorStandardHighValue3() {
+		distance.setAmount(200000d);
+		assertEquals(2.87, RFICalculator.getRFIFactor(distance), 0d);
+	}
+	
+	@Test
+	public void testGetRFIFactorInterpolated1() {
 		distance.setAmount(563d);
-		assertTrue(1.20412 == RFICalculator.getRFIFactor(distance));
+		assertEquals(1.20412, RFICalculator.getRFIFactor(distance), 0d);
+	}
+	
+	@Test
+	public void testGetRFIFactorInterpolated2() {
 		distance.setAmount(2783d);
-		assertTrue(2.602215 == RFICalculator.getRFIFactor(distance));
+		assertEquals(2.602215, RFICalculator.getRFIFactor(distance), 0d);
+	}
+	
+	@Test
+	public void testGetRFIFactorInterpolated3() {
 		distance.setAmount(10500d);
-		assertTrue(2.87 == RFICalculator.getRFIFactor(distance));
+		assertEquals(2.87, RFICalculator.getRFIFactor(distance), 0d);
 	}
 	
 	@Test (expected = IllegalArgumentException.class)

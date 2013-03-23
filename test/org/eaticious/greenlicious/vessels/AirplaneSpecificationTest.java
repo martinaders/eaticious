@@ -41,15 +41,18 @@ public class AirplaneSpecificationTest {
 	}
 
 	@Test
-	public void testHasConsumptionData() {
+	public void testHasConsumptionDataFalse() {
 		assertFalse(spec.hasConsumptionData());
-		
+	}
+	
+	@Test
+	public void testHasConsumptionDataTrue() {
 		spec.addConsumptionEntry(10d, 100d);
 		assertTrue(spec.hasConsumptionData());
 	}
 
 	@Test
-	public void testGetConsumptionProfile() {
+	public void testAddConsumptionEntry() {
 		spec.addConsumptionEntry(10d, 100d);
 		spec.addConsumptionEntry(10d, 150d);
 		spec.addConsumptionEntry(20d, 200d);
@@ -58,13 +61,15 @@ public class AirplaneSpecificationTest {
 		assertEquals(200d, spec.getConsumptionProfile().get(20d), 0d);
 		
 	}
-
-	@Test
-	public void testAddConsumptionEntry() {
-		spec.addConsumptionEntry(10d, 100d);
-		assertTrue(spec.hasConsumptionData());
-	}
 	
+	@Test
+	public void testGetConsumptionData() {
+		spec.addConsumptionEntry(10d, 100d);
+		spec.addConsumptionEntry(10d, 150d);
+		spec.addConsumptionEntry(20d, 200d);
+		assertEquals(150d, spec.getConsumptionProfile().get(10d), 0d);
+	}
+
 	@Test (expected = IllegalArgumentException.class)
 	public void testAddConsumptionEntryNullKey() {
 		spec.addConsumptionEntry(null, 100d);
