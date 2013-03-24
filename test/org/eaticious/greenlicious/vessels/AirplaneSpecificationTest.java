@@ -57,9 +57,6 @@ public class AirplaneSpecificationTest {
 		spec.addConsumptionEntry(10d, 150d);
 		spec.addConsumptionEntry(20d, 200d);
 		assertEquals(2, spec.getConsumptionProfile().size(), 0d);
-		assertEquals(150d, spec.getConsumptionProfile().get(10d), 0d);
-		assertEquals(200d, spec.getConsumptionProfile().get(20d), 0d);
-		
 	}
 	
 	@Test

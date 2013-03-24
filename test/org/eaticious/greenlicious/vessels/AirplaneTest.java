@@ -34,8 +34,8 @@ public class AirplaneTest {
 		// matching defined value
 		Quantity distance = new QuantityImpl(100d, Unit.KILOMETER);
 		Double expected = plane.getFuelConsumption(distance).getAmount() * Airplane.KEROSENE_FACTOR;
-		Double actual = plane.getTotalCO2e(distance, false).getAmount();
-		assertTrue("Expected: " + expected + " - Actual: " + actual, expected.equals(actual));
+		Double actual = plane.getTotalCO2e(distance, false).convert(Unit.KG_CO2E).getAmount();
+		assertEquals("Expected: " + expected + " - Actual: " + actual, expected, actual);
 
 	}
 
@@ -44,8 +44,8 @@ public class AirplaneTest {
 		// in between values
 		Quantity distance = new QuantityImpl(147.9, Unit.KILOMETER);
 		Double expected = plane.getFuelConsumption(distance).getAmount() * Airplane.KEROSENE_FACTOR;
-		Double actual = plane.getTotalCO2e(distance, false).getAmount();
-		assertTrue("Expected: " + expected + " - Actual: " + actual, expected.equals(actual));
+		Double actual = plane.getTotalCO2e(distance, false).convert(Unit.KG_CO2E).getAmount();
+		assertEquals("Expected: " + expected + " - Actual: " + actual, expected, actual);
 	}
 
 	@Test
@@ -53,8 +53,8 @@ public class AirplaneTest {
 		// 25% of lowest value
 		Quantity distance = new QuantityImpl(2.5, Unit.KILOMETER);
 		Double expected = plane.getFuelConsumption(distance).getAmount() * Airplane.KEROSENE_FACTOR;
-		Double actual = plane.getTotalCO2e(distance, false).getAmount();
-		assertTrue("Expected: " + expected + " - Actual: " + actual, expected.equals(actual));
+		Double actual = plane.getTotalCO2e(distance, false).convert(Unit.KG_CO2E).getAmount();
+		assertEquals("Expected: " + expected + " - Actual: " + actual, expected, actual);
 	}
 
 	@Test
@@ -62,16 +62,16 @@ public class AirplaneTest {
 		// 100% of highest value
 		Quantity distance = new QuantityImpl(200d, Unit.KILOMETER);
 		Double expected = plane.getFuelConsumption(distance).getAmount() * Airplane.KEROSENE_FACTOR;
-		Double actual = plane.getTotalCO2e(distance, false).getAmount();
-		assertTrue("Expected: " + expected + " - Actual: " + actual, expected.equals(actual));
+		Double actual = plane.getTotalCO2e(distance, false).convert(Unit.KG_CO2E).getAmount();
+		assertEquals("Expected: " + expected + " - Actual: " + actual, expected, actual);
 	}
 
 	@Test
 	public void testGetTotalCO2eRFIShortFlights() {
 		// no RFI-influence for short flights
 		Quantity distance = new QuantityImpl(1d, Unit.KILOMETER);
-		Double first = plane.getTotalCO2e(distance, false).getAmount();
-		Double second = plane.getTotalCO2e(distance, true).getAmount();
+		Double first = plane.getTotalCO2e(distance, false).convert(Unit.KG_CO2E).getAmount();
+		Double second = plane.getTotalCO2e(distance, true).convert(Unit.KG_CO2E).getAmount();
 		assertEquals("Very short distance. Expected: " + first + " - Actual: " + second
 				+ " should be equal for very short flights.", first, second);
 	}
@@ -80,8 +80,8 @@ public class AirplaneTest {
 	public void testGetTotalCO2eRFIMidrangeFlights() {
 		// rfi-factor should rise the co2e emission
 		Quantity distance = new QuantityImpl(1000d, Unit.KILOMETER);
-		Double first = plane.getTotalCO2e(distance, false).getAmount();
-		Double second = plane.getTotalCO2e(distance, true).getAmount();
+		Double first = plane.getTotalCO2e(distance, false).convert(Unit.KG_CO2E).getAmount();
+		Double second = plane.getTotalCO2e(distance, true).convert(Unit.KG_CO2E).getAmount();
 		assertTrue("Calc with RFI vs without RFI: Expected: " + first + " - Actual: " + second
 				+ " should not be the same.", first < second);
 	}
@@ -91,8 +91,8 @@ public class AirplaneTest {
 		// bigger distance should mean bigger emission
 		Quantity distance = new QuantityImpl(1000d, Unit.KILOMETER);
 		Quantity distance2 = new QuantityImpl(2000d, Unit.KILOMETER);
-		Double first = plane.getTotalCO2e(distance, true).getAmount();
-		Double second = plane.getTotalCO2e(distance2, true).getAmount();
+		Double first = plane.getTotalCO2e(distance, true).convert(Unit.KG_CO2E).getAmount();
+		Double second = plane.getTotalCO2e(distance2, true).convert(Unit.KG_CO2E).getAmount();
 		assertTrue("Longer distance - higher emission: Expected: " + first + " - Actual: " + second
 				+ "should not be the same.", first < second);
 	}
@@ -101,8 +101,8 @@ public class AirplaneTest {
 	public void testGetTotalCO2eSamePerKM() {
 		// emissions for both methods should be the same as 1km is set
 		Quantity distance = new QuantityImpl(1d, Unit.KILOMETER);
-		Double total = plane.getTotalCO2e(distance, false).getAmount();
-		Double perKM = plane.getTotalCO2ePerKM(distance, false).getAmount();
+		Double total = plane.getTotalCO2e(distance, false).convert(Unit.KG_CO2E).getAmount();
+		Double perKM = plane.getTotalCO2ePerKM(distance, false).convert(Unit.KG_CO2E).getAmount();
 		assertEquals(total, perKM);
 	}
 
@@ -110,8 +110,8 @@ public class AirplaneTest {
 	public void testGetTotalCO2eInterpolatePerKM() {
 		// total emission should be the same as per km emission times distance
 		Quantity distance = new QuantityImpl(153.2, Unit.KILOMETER);
-		Double total = plane.getTotalCO2e(distance, false).getAmount();
-		Double perKM = plane.getTotalCO2ePerKM(distance, false).getAmount();
+		Double total = plane.getTotalCO2e(distance, false).convert(Unit.KG_CO2E).getAmount();
+		Double perKM = plane.getTotalCO2ePerKM(distance, false).convert(Unit.KG_CO2E).getAmount();
 		assertEquals(total, perKM * distance.getAmount(), 0d);
 	}
 
@@ -120,71 +120,66 @@ public class AirplaneTest {
 		// testing with calculated date from excel-prototype, might have slightly different results,
 		// therefore errormargin is defined
 		// Test 1 - cargo freight
-		Double errormargin = 0.03; // error should be smaller than 3%
+		Double errormargin = 0.02; // error should be smaller than 2%
 		Quantity distance = new QuantityImpl(5000d, Unit.KILOMETER);
 		Airplane plane = new Airplane(StandardModel.F_747_400F);
 		Quantity payload = new QuantityImpl(1000d, Unit.KILOGRAM);
 
 		double expected = 6296.2;
-		double actual = Math.round(plane.getCO2e(distance, payload, true).getAmount() * 10) / 10.0;
-		Double error = Math.abs(1 - (actual / expected));
-		assertTrue(error < errormargin);
+		double actual = plane.getCO2e(distance, payload, true).convert(Unit.KG_CO2E).getAmount();
+		assertEquals(expected, actual, errormargin*expected);
 	}
 
 	@Test
 	public void testGetCO2eCargoFreight2() {
 		// Test 2 - cargo freight
-		Double errormargin = 0.03; // error should be smaller than 3%
+		Double errormargin = 0.02; // error should be smaller than 2%
 		Quantity distance = new QuantityImpl(8000d, Unit.KILOMETER);
 		Airplane plane = new Airplane(StandardModel.F_747_400F);
 		Quantity payload = new QuantityImpl(500d, Unit.KILOGRAM);
 
 		Double expected = 5304.3;
-		Double actual = Math.round(plane.getCO2e(distance, payload, true).getAmount() * 10) / 10.0;
-		Double error = Math.abs(1 - (actual / expected));
-		assertTrue(error < errormargin);
+		Double actual = plane.getCO2e(distance, payload, true).getAmount();
+		assertEquals(expected, actual, errormargin*expected);
 	}
 
 	@Test
 	public void testGetCO2eBellyFreight() {
 		// Test 3 - belly freight
-		Double errormargin = 0.03; // error should be smaller than 3%
+		Double errormargin = 0.02; // error should be smaller than 2%
 		Quantity distance = new QuantityImpl(7408d, Unit.KILOMETER);
 		Airplane plane = new Airplane(StandardModel.P_747_400);
 		Quantity payload = new QuantityImpl(500d, Unit.KILOGRAM);
 
 		Double expected = 8376.5;
-		Double actual = Math.round(plane.getCO2e(distance, payload, true).getAmount() * 10) / 10.0;
-		Double error = Math.abs(1 - (actual / expected));
-		assertTrue(error < errormargin);
+		Double actual = plane.getCO2e(distance, payload, true).getAmount();
+		assertEquals(expected, actual, errormargin*expected);
 	}
 
 	@Test
 	public void testGetCO2eBellyFreight2() {
 		// Test 4 - belly freight
-		Double errormargin = 0.03; // error should be smaller than 3%
+		Double errormargin = 0.02; // error should be smaller than 2%
 		Quantity distance = new QuantityImpl(15287d, Unit.KILOMETER);
 		Airplane plane = new Airplane(StandardModel.P_747_400);
 		Quantity payload = new QuantityImpl(500d, Unit.KILOGRAM);
 
 		Double expected = 17372.5;
-		Double actual = Math.round(plane.getCO2e(distance, payload, true).getAmount() * 10) / 10.0;
-		Double error = Math.abs(1 - (actual / expected));
-		assertTrue(error < errormargin);
+		Double actual = plane.getCO2e(distance, payload, true).getAmount();
+		assertEquals(expected, actual, errormargin*expected);
 	}
 
 	@Test
 	public void testGetCO2eBellyFreight3() {
 		// Test 5 - belly freight short haul & small airplane
-		Double errormargin = 0.03; // error should be smaller than 3%
+		Double errormargin = 0.02; // error should be smaller than 2%
 		Quantity distance = new QuantityImpl(1711d, Unit.KILOMETER);
 		Airplane plane = new Airplane(StandardModel.P_FOKKER100);
 		Quantity payload = new QuantityImpl(500d, Unit.KILOGRAM);
 
 		Double expected = 2965.8;
-		Double actual = Math.round(plane.getCO2e(distance, payload, true).getAmount() * 10) / 10.0;
-		Double error = Math.abs(1 - (actual / expected));
-		assertTrue(error < errormargin);
+		Double actual = plane.getCO2e(distance, payload, true).getAmount();
+		assertEquals(expected, actual, errormargin*expected);
 	}
 
 	@Test

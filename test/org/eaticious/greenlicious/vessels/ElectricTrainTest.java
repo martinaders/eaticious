@@ -27,8 +27,8 @@ public class ElectricTrainTest {
 		Landscape landscape = Landscape.HILL;
 		TransportClass tc = TransportClass.BULK;
 		Double expected = 0.00002761;
-		Double actual = Math.round(stdTrain.getFuelConsumption(landscape, tc).getAmount() * 100000000) / 100000000d;
-		assertEquals(expected, actual);		
+		Double actual = stdTrain.getFuelConsumption(landscape, tc).getAmount();
+		assertEquals(expected, actual, 1e-8);		
 	}
 	
 	@Test
@@ -36,8 +36,8 @@ public class ElectricTrainTest {
 		Landscape landscape = Landscape.FLAT;
 		TransportClass tc = TransportClass.BULK;
 		Double expected = 0.00002485;
-		Double actual = Math.round(stdTrain.getFuelConsumption(landscape, tc).getAmount() * 100000000) / 100000000d;
-		assertEquals(expected, actual);
+		Double actual =stdTrain.getFuelConsumption(landscape, tc).getAmount();
+		assertEquals(expected, actual, 1e-8);
 	}
 	
 	@Test
@@ -45,8 +45,8 @@ public class ElectricTrainTest {
 		Landscape landscape = Landscape.MOUNTAIN;
 		TransportClass tc = TransportClass.BULK;
 		Double expected = 0.00003037;
-		Double actual = Math.round(stdTrain.getFuelConsumption(landscape, tc).getAmount() * 100000000) / 100000000d;
-		assertEquals(expected, actual);
+		Double actual = stdTrain.getFuelConsumption(landscape, tc).getAmount();
+		assertEquals(expected, actual, 1e-8);
 	}
 	
 	@Test
@@ -54,18 +54,8 @@ public class ElectricTrainTest {
 		Landscape landscape = Landscape.MOUNTAIN;
 		TransportClass tc = TransportClass.AVERAGE;
 		Double expected = 0.00003504;
-		Double actual = Math.round(stdTrain.getFuelConsumption(landscape, tc).getAmount() * 100000000) / 100000000d;
-		assertEquals(expected, actual);
-		
-		tc = TransportClass.UNKNOWN;
-		expected = 0.00003504;
-		actual = Math.round(stdTrain.getFuelConsumption(landscape, tc).getAmount() * 100000000) / 100000000d;
-		assertEquals(expected, actual);
-		
-		tc = TransportClass.VOLUME;
-		expected = 0.00004555;
-		actual = Math.round(stdTrain.getFuelConsumption(landscape, tc).getAmount() * 100000000) / 100000000d;
-		assertEquals(expected, actual);
+		Double actual = stdTrain.getFuelConsumption(landscape, tc).getAmount();
+		assertEquals(expected, actual, 1e-8);
 	}
 	
 	@Test
@@ -73,13 +63,8 @@ public class ElectricTrainTest {
 		Landscape landscape = Landscape.MOUNTAIN;
 		TransportClass tc = TransportClass.UNKNOWN;
 		Double expected = 0.00003504;
-		Double actual = Math.round(stdTrain.getFuelConsumption(landscape, tc).getAmount() * 100000000) / 100000000d;
-		assertEquals(expected, actual);
-		
-		tc = TransportClass.VOLUME;
-		expected = 0.00004555;
-		actual = Math.round(stdTrain.getFuelConsumption(landscape, tc).getAmount() * 100000000) / 100000000d;
-		assertEquals(expected, actual);
+		Double actual = stdTrain.getFuelConsumption(landscape, tc).getAmount();
+		assertEquals(expected, actual, 1e-8);
 	}
 
 	@Test
@@ -87,8 +72,8 @@ public class ElectricTrainTest {
 		Landscape landscape = Landscape.MOUNTAIN;
 		TransportClass tc = TransportClass.VOLUME;
 		Double expected = 0.00004555;
-		Double actual = Math.round(stdTrain.getFuelConsumption(landscape, tc).getAmount() * 100000000) / 100000000d;
-		assertEquals(expected, actual);
+		Double actual = stdTrain.getFuelConsumption(landscape, tc).getAmount();
+		assertEquals(expected, actual, 1e-8);
 	}
 	
 	@Test
@@ -96,8 +81,8 @@ public class ElectricTrainTest {
 		Landscape landscape = Landscape.MOUNTAIN;
 		TransportClass tc = TransportClass.VOLUME;
 		Double expected = 0.00001929;
-		Double actual = Math.round(bigTrain.getFuelConsumption(landscape, tc).getAmount() * 100000000) / 100000000d;
-		assertEquals(expected, actual);
+		Double actual = bigTrain.getFuelConsumption(landscape, tc).getAmount();
+		assertEquals(expected, actual, 1e-8);
 	}
 	
 	@Test
@@ -106,7 +91,7 @@ public class ElectricTrainTest {
 		TransportClass tc = TransportClass.AVERAGE;
 		Double energyMixFactor = 0.67;
 		Double expected = stdTrain.getFuelConsumption(landscape, tc).getAmount() * energyMixFactor;
-		Double actual = stdTrain.getCO2ePerKGKM(energyMixFactor, landscape, tc).getAmount();
+		Double actual = stdTrain.getCO2ePerKGKM(energyMixFactor, landscape, tc).convert(Unit.KG_CO2E).getAmount();
 		assertEquals(expected, actual);
 	}
 	
@@ -117,7 +102,7 @@ public class ElectricTrainTest {
 		Double energyMixFactor = 0.67;
 		Quantity distance = new QuantityImpl(250000d, Unit.METER);
 		Double expected = stdTrain.getFuelConsumption(landscape, tc).getAmount() * energyMixFactor * distance.convert(Unit.KILOMETER).getAmount();
-		Double actual = stdTrain.getCO2ePerKG(distance, energyMixFactor, landscape, tc).getAmount();
+		Double actual = stdTrain.getCO2ePerKG(distance, energyMixFactor, landscape, tc).convert(Unit.KG_CO2E).getAmount();
 		assertEquals(expected, actual);
 	}
 	
@@ -129,7 +114,7 @@ public class ElectricTrainTest {
 		Quantity distance = new QuantityImpl(250000d, Unit.METER);
 		Quantity weight = new QuantityImpl(1000d, Unit.GRAM);
 		Double expected = stdTrain.getFuelConsumption(landscape, tc).getAmount() * energyMixFactor * distance.convert(Unit.KILOMETER).getAmount() * weight.convert(Unit.KILOGRAM).getAmount();
-		Double actual = stdTrain.getCO2e(weight, distance, energyMixFactor, landscape, tc).getAmount();
+		Double actual = stdTrain.getCO2e(weight, distance, energyMixFactor, landscape, tc).convert(Unit.KG_CO2E).getAmount();
 		assertEquals(expected, actual);
 	}
 }

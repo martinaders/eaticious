@@ -40,7 +40,7 @@ public class CargoShipTest {
 		TransportClass tc = TransportClass.AVERAGE;
 		ShippingRoute route = ShippingRoute.GLOBAL_AVERAGE;
 		
-		double expected = 0.000016;
+		double expected = 0.00001600;
 		double actual = ship.getCO2ePerKGKM(tc, route).convert(Unit.KG_CO2E).getAmount();
 		assertEquals(expected, actual, 1e-8);
 	}
@@ -60,7 +60,7 @@ public class CargoShipTest {
 		TransportClass tc = TransportClass.VOLUME;
 		ShippingRoute route = ShippingRoute.GLOBAL_AVERAGE;
 		
-		double expected = 0.000028;
+		double expected = 0.00002800;
 		double actual = ship.getCO2ePerKGKM(tc, route).convert(Unit.KG_CO2E).getAmount();
 		assertEquals(expected, actual, 1e-8);
 	}
@@ -70,7 +70,7 @@ public class CargoShipTest {
 		TransportClass tc = TransportClass.AVERAGE;
 		ShippingRoute route = ShippingRoute.PANAMA;
 		
-		double expected = 0.000016 * ShippingRoute.PANAMA.getEmissionFactor();
+		double expected = 0.00001600 * ShippingRoute.PANAMA.getEmissionFactor();
 		double actual = ship.getCO2ePerKGKM(tc, route).convert(Unit.KG_CO2E).getAmount();
 		assertEquals(expected, actual, 1e-8);
 	}
@@ -82,7 +82,7 @@ public class CargoShipTest {
 		TransportClass tc = TransportClass.AVERAGE;
 		ShippingRoute route = ShippingRoute.GLOBAL_AVERAGE;
 		
-		double expected = 0.000016;
+		double expected = 0.00001600;
 		double actual = ship.getCO2e(weight, tc, distance, route).convert(Unit.KG_CO2E).getAmount();
 		assertEquals(expected, actual, 1e-8);
 	}
@@ -118,7 +118,7 @@ public class CargoShipTest {
 		TransportClass tc = TransportClass.AVERAGE;
 		ShippingRoute route = ShippingRoute.TRANSPACIFIC;
 		
-		double expected = 0.000016 * ShippingRoute.TRANSPACIFIC.getEmissionFactor();
+		double expected = 0.00001600 * ShippingRoute.TRANSPACIFIC.getEmissionFactor();
 		double actual = ship.getCO2e(weight, tc, distance, route).convert(Unit.KG_CO2E).getAmount();
 		assertEquals(expected, actual, 1e-8);
 	}
