@@ -21,7 +21,17 @@ public interface FoodProduct extends Serializable {
 	 * AVERAGE: statistically determined average value for all transports of a given carrier in a reference year
 	 */
 	enum TransportClass {
-		BULK, AVERAGE, VOLUME, UNKNOWN;
+		BULK(14.5), AVERAGE(10.5), VOLUME(6.0), UNKNOWN(10.5);
+		
+		private Double tonsPerTEU;
+		
+		private TransportClass(Double tonsPerTEUKM){
+			this.tonsPerTEU = tonsPerTEUKM;
+		}
+		
+		public Double getTonsPerTEUKM(){
+			return this.tonsPerTEU;
+		}
 	}
 
 	/**

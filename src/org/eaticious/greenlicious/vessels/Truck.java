@@ -62,7 +62,7 @@ public class Truck implements Vessel {
 	 */
 	public Quantity getTotalCO2ePerKM(Double loadFactor, Double emptyTripFactor) {
 		Double co2e = this.getFuelConsumption(loadFactor, emptyTripFactor).getAmount() / 100.0 * CO2E_PER_LITER_DIESEL;
-		return new QuantityImpl(co2e, Unit.CO2E);
+		return new QuantityImpl(co2e, Unit.KG_CO2E);
 	}
 
 	/**

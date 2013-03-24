@@ -48,5 +48,17 @@ public class QuantityImpl implements Quantity {
 	public void setUnit(final Unit unit) {
 		this.unit = unit;
 	}
+	
+	@Override
+	public boolean equals(Object comparator){
+		boolean result;
+		if(comparator instanceof Quantity && this.getUnit().getDimension() == ((Quantity)comparator).getUnit().getDimension()){
+			Double amountToCompare = ((Quantity)comparator).convert(this.getUnit()).getAmount();
+			result = this.getAmount().equals(amountToCompare);
+		} else {
+			result = false;
+		}
+		return result;
+	}
 
 }

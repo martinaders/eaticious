@@ -101,7 +101,7 @@ public class Airplane implements Vessel {
 		// multiply with kerosene factor
 		final double co2e = fuelConsumption * KEROSENE_FACTOR;
 		// return result
-		return new QuantityImpl(co2e, Unit.CO2E);
+		return new QuantityImpl(co2e, Unit.KG_CO2E);
 	}
 
 	/**
@@ -135,7 +135,7 @@ public class Airplane implements Vessel {
 	 */
 	public Quantity getCO2e(final Quantity distance, final Quantity payload, final boolean useRFI) {
 		Double co2e = this.getTotalCO2e(distance, useRFI).getAmount() / this.getTransportedWeight(distance) * payload.convert(Unit.KILOGRAM).getAmount();
-		return new QuantityImpl(co2e, Unit.CO2E);
+		return new QuantityImpl(co2e, Unit.KG_CO2E);
 	}
 
 	/**
