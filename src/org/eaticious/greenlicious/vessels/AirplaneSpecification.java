@@ -211,7 +211,7 @@ public class AirplaneSpecification implements Vessel {
 	/**
 	 * Adds an entry into the consumptionProfile of this Airplane
 	 * @param distance the distance of the flight in kilometer
-	 * @param value the kerosene consumption over the distance
+	 * @param value the kerosene consumption in kg over the distance
 	 */
 	public void addConsumptionEntry(Double distance, Double value) {
 		if(distance == null || value == null || distance < 0 || value < 0){
