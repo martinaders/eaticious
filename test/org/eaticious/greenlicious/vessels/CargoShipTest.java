@@ -5,9 +5,6 @@ import static org.junit.Assert.*;
 import org.eaticious.common.Quantity;
 import org.eaticious.common.QuantityImpl;
 import org.eaticious.common.Unit;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -21,18 +18,6 @@ public class CargoShipTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		ship = new CargoShip();
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
 	}
 	
 	@Test
