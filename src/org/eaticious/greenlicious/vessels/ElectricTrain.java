@@ -1,10 +1,10 @@
 package org.eaticious.greenlicious.vessels;
 
 import org.eaticious.common.FoodProduct.TransportClass;
+import org.eaticious.common.RegionSpecification.Landscape;
 import org.eaticious.common.Quantity;
 import org.eaticious.common.QuantityImpl;
 import org.eaticious.common.Unit;
-import org.eaticious.greenlicious.RegionSpecification.Landscape;
 import org.eaticious.greenlicious.vessels.ElectricTrainSpecification.TrainModel;
 
 public class ElectricTrain implements Vessel {

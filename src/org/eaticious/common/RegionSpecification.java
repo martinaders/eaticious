@@ -1,4 +1,4 @@
-package org.eaticious.greenlicious;
+package org.eaticious.common;
 
 public interface RegionSpecification {
 

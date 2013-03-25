@@ -3,10 +3,10 @@ package org.eaticious.greenlicious.vessels;
 import static org.junit.Assert.*;
 
 import org.eaticious.common.FoodProduct.TransportClass;
+import org.eaticious.common.RegionSpecification.Landscape;
 import org.eaticious.common.Quantity;
 import org.eaticious.common.QuantityImpl;
 import org.eaticious.common.Unit;
-import org.eaticious.greenlicious.RegionSpecification.Landscape;
 import org.eaticious.greenlicious.vessels.ElectricTrainSpecification.TrainModel;
 import org.junit.BeforeClass;
 import org.junit.Test;
