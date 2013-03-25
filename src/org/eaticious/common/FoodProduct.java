@@ -79,6 +79,11 @@ public interface FoodProduct extends Serializable {
 	List<Season> getSeasons(Region region);
 
 	/**
+	 * @return true if this product cannot be stored long time and thus is subject to a certain season
+	 */
+	Boolean isSeasonDependant();
+	
+	/**
 	 * 
 	 * @return density of ingredient for correct volume to weight transformation (EL, TL to grams)
 	 */
