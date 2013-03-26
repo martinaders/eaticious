@@ -7,18 +7,43 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import org.eaticious.common.SeasonType;
-
+/**
+ * This class represents Seasons meaning timespans between two dates not regarding the year of the dates.
+ * It may be used to defined periodic / recurring seasons such as growing seasons of vegetables that only depend on day and month.
+ * This will not take account of years, hours, minutes or seconds
+ * @author Sven Peetz
+ *
+ */
 public class SeasonImpl implements Season {
 
+	/**
+	 * The default year this will be working with
+	 */
 	private static final int referenceYear = 2001;
-	private static final Calendar refCal = new GregorianCalendar(referenceYear, Calendar.JANUARY, 1, 0, 0, 0);
+	
+	private static final GregorianCalendar refCal = new GregorianCalendar(referenceYear, Calendar.JANUARY, 1, 0, 0, 0);
+	/**
+	 * The start of this Season
+	 */
 	GregorianCalendar begin;
+	/** 
+	 * The duration of this Season in milliseconds
+	 */
 	Long duration;
+	/**
+	 * The offset of this Season to the 1st of January in milliseconds
+	 */
 	Long offset;
+	/**
+	 * The {@link SeasonType} of this Season
+	 */
 	private SeasonType type;
 
+	/**
+	 * Will construct a SeasonImpl with a duration of zero beginning and ending the 1st of January 2001
+	 */
 	public SeasonImpl() {
-		GregorianCalendar cal = new GregorianCalendar(referenceYear, Calendar.JANUARY, 1, 0, 0, 0);
+		GregorianCalendar cal = refCal;
 		this.begin = cal;
 		this.duration = 0L;
 		this.offset = 0L;
@@ -29,6 +54,12 @@ public class SeasonImpl implements Season {
 		return this.begin;
 	}
 
+	/**
+	 * Returns the time in milliseconds between the two {@link Calendar}
+	 * @param from the first date
+	 * @param till the second date
+	 * @return The time in milliseconds between the two dates, negative values may be returned
+	 */
 	private Long getDaysBetween(Calendar from, Calendar till) {
 		return (till.getTimeInMillis() - from.getTimeInMillis()); 
 	}
