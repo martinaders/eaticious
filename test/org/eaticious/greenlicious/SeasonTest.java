@@ -8,16 +8,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import javax.swing.text.DateFormatter;
-
 import org.eaticious.common.SeasonType;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import sun.util.calendar.CalendarUtils;
 
 public class SeasonTest {
 	
@@ -184,7 +180,7 @@ public class SeasonTest {
 	@Test
 	public void testMakeCalendar() {
 		int day = 23;
-		int month = 9; // month is 10-1 (January is 0)
+		int month = Calendar.OCTOBER; // month is 10-1 (January is 0)
 		int year = 2013;
 		String date = "2013-10-23";
 		String format = "yyyy-M-dd";
@@ -196,14 +192,49 @@ public class SeasonTest {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	public void testSetBeginningDate() {
+		GregorianCalendar cal = new GregorianCalendar(2004, Calendar.FEBRUARY, 29);
+		this.season.setBeginning(cal.getTime());
+		Calendar actual = this.season.getBeginning();
+		assertTrue(28 == actual.get(Calendar.DATE) && Calendar.FEBRUARY == actual.get(Calendar.MONTH));
+	}
 
 	@Test
-	public void testSetBeginningIntegerInteger() {
+	public void testSetBeginningDayMonth() {
 		int day = 13;
-		int month = 7;
+		int month = Calendar.JULY;
 		this.season.setBeginning(day, month);
 		Calendar cal = this.season.getBeginning();
 		assertTrue(cal.get(Calendar.DATE) == day && cal.get(Calendar.MONTH) == month);
+	}
+	
+	@Test
+	public void testSetBeginningDayMonth2() {
+		int day = 29;
+		int month = Calendar.FEBRUARY;
+		this.season.setBeginning(day, month);
+		Calendar actual = this.season.getBeginning();
+		assertTrue(28 == actual.get(Calendar.DATE) && month == actual.get(Calendar.MONTH));
+	}
+	
+	@Test
+	public void testSetBeginningMonth() {
+		int month = Calendar.FEBRUARY;
+		this.season.setBeginning(month);
+		Calendar actual = this.season.getBeginning();
+		assertTrue(1 == actual.get(Calendar.DATE) && month == actual.get(Calendar.MONTH));
+	}
+	
+	@Test
+	public void testSetEndCal() {
+		GregorianCalendar calBegin = new GregorianCalendar(2004, Calendar.APRIL, 29, 0, 12, 59);
+		this.season.setBeginning(calBegin);
+		GregorianCalendar calEnd = new GregorianCalendar(2004, Calendar.FEBRUARY, 29, 0, 12, 59);
+		this.season.setEnd(calEnd);
+		GregorianCalendar actual = this.season.getEnd();
+		assertTrue(calEnd.get(Calendar.MONTH) == actual.get(Calendar.MONTH) && 28 == actual.get(Calendar.DATE));
 	}
 
 	@Test
@@ -215,13 +246,29 @@ public class SeasonTest {
 	}
 
 	@Test
-	public void testSetEndIntegerInteger() {
+	public void testSetEndDayMonth() {
 		int day = 13;
-		int month = 7;
-		GregorianCalendar calex = new GregorianCalendar(2001, month, day, 0, 0, 0);
+		int month = Calendar.JULY;
 		this.season.setEnd(day, month);
 		Calendar cal = this.season.getEnd();
 		assertTrue(cal.get(Calendar.DATE) == day && cal.get(Calendar.MONTH) == month);
+	}
+	
+	@Test
+	public void testSetEndDayMonth2() {
+		int day = 29;
+		int month = Calendar.FEBRUARY;
+		this.season.setEnd(day, month);
+		Calendar actual = this.season.getEnd();
+		assertTrue(28 == actual.get(Calendar.DATE) && month == actual.get(Calendar.MONTH));
+	}
+	
+	@Test
+	public void testSetEndMonth() {
+		int month = Calendar.MARCH;
+		this.season.setEnd(month);
+		Calendar actual = this.season.getEnd();
+		assertTrue(actual.get(Calendar.DATE) == 31 && actual.get(Calendar.MONTH) == month);
 	}
 
 	private Double makeDateComparator(Calendar cal){

@@ -103,9 +103,7 @@ public class SeasonImpl implements Season {
 
 	@Override
 	public void setBeginning(int month) {
-		;
 		this.setBeginning(new GregorianCalendar(referenceYear, month, 1));
-
 	}
 
 	@Override
