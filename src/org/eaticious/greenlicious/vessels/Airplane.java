@@ -11,26 +11,28 @@ import org.eaticious.common.QuantityImpl;
 import org.eaticious.common.Unit;
 import org.eaticious.greenlicious.calc.RFICalculator;
 import org.eaticious.greenlicious.vessels.AirplaneSpecification.StandardModel;
-
+/**
+ * This represents Airplanes as used by EcoTransIT for calculation of CO2E-emissions.
+ * @author Sven Peetz
+ *
+ */
 public class Airplane implements Vessel {
 
-	// TODO make set of conversion factors for co2e in other place, maybe enum or DB
-	public static final Double KEROSENE_FACTOR = 3.128;
-	public static final int PASSENGER_WEIGHT = 100;
-
-	private Map<HaulDistance, Double> freightCapacityUtilization;
-
-	private Map<HaulDistance, Double> passengerCapacityUtilization;
-	
 	/**
-	 * AirplaneSpecification holding data needed to make CO2e calculations for Airplanes
+	 * A definition of short, medium and long hauls of Airplanes
+	 * @author Sven Peetz
+	 *
 	 */
-	private AirplaneSpecification specs;
-
 	enum HaulDistance {
 		SHORT(0, 1000), MEDIUM(1000, 3700), LONG(3700, Integer.MAX_VALUE);
 
+		/**
+		 * The minimum distance of the HaulDistance cluster
+		 */
 		private Integer minDistance;
+		/**
+		 * The maximum distance of the HaulDistance cluster
+		 */
 		private Integer maxDistance;
 
 		private HaulDistance(final int minDistance, final int maxDistance) {
@@ -38,16 +40,41 @@ public class Airplane implements Vessel {
 			this.maxDistance = maxDistance;
 		}
 
-		public Integer getMinDistance() {
-			return this.minDistance;
-		}
-
+		/**
+		 * Returns the maximum distance of the HaulDistance cluster. Flights having larger distances than this belong to another HaulDistance cluster.
+		 * @return The maximum distance of this HaulDistance cluster
+		 */
 		public Integer getMaxDistance() {
 			return this.maxDistance;
 		}
-	}
 
+		/**
+		 * Returns the minimum distance of the HaulDistance cluster. Flights having lower distances than this belong to another HaulDistance cluster.
+		 * @return The minimum distance of this HaulDistance cluster
+		 */
+		public Integer getMinDistance() {
+			return this.minDistance;
+		}
+	}
+	// TODO make set of conversion factors for co2e in other place, maybe enum or DB
+	public static final Double KEROSENE_FACTOR = 3.128;	
+	// TODO Move to config
+	public static final int PASSENGER_WEIGHT = 100;
+
+	/**
+	 * The mean capacity utilization regarding the cargo of the Airplane
+	 */
+	private Map<HaulDistance, Double> freightCapacityUtilization;
 	
+	/**
+	 * The mean capacity utilization regarding the number of passengers in the Airplane
+	 */
+	private Map<HaulDistance, Double> passengerCapacityUtilization;
+
+	/**
+	 * AirplaneSpecification holding data needed to make CO2e calculations for Airplanes
+	 */
+	private AirplaneSpecification specs;
 
 	/**
 	 * Standard constructor
@@ -79,46 +106,6 @@ public class Airplane implements Vessel {
 	 */
 	public Airplane(final StandardModel model) {
 		this(new AirplaneSpecification(model));
-	}
-
-	/**
-	 * Calculates the complete CO2e emission for the whole flight
-	 * 
-	 * @param distance
-	 *            the distance traveled
-	 * @param useRFI
-	 *            true if the higher greenhouse potential for emission near the stratosphere should be used, false
-	 *            otherwise
-	 * @return The CO2e emission for the whole flight
-	 */
-	public Quantity getTotalCO2e(final Quantity distance, final boolean useRFI) {
-		// TODO check if flight distance should be adjusted in here or if this is done by caller
-		Double fuelConsumption = this.getFuelConsumption(distance).getAmount();
-		if (useRFI) {
-			// multiply with rfi factor
-			fuelConsumption *= RFICalculator.getRFIFactor(distance);
-		}
-		// multiply with kerosene factor
-		final double co2e = fuelConsumption * KEROSENE_FACTOR;
-		// return result
-		return new QuantityImpl(co2e, Unit.KG_CO2E);
-	}
-
-	/**
-	 * Calculates the CO2e emission per kilometer for a flight
-	 * 
-	 * @param distance
-	 *            The distance traveled
-	 * @param useRFI
-	 *            true if the higher greenhouse potential for emission near the stratosphere should be used, false
-	 *            otherwise
-	 * @return The CO2e emission per kilometer for the whole flight
-	 */
-	public Quantity getTotalCO2ePerKM(final Quantity distance, final boolean useRFI) {
-		final Double calcDistance = distance.convert(Unit.KILOMETER).getAmount();
-		final Quantity co2e = this.getTotalCO2e(distance, useRFI);
-		co2e.setAmount(co2e.getAmount() / calcDistance);
-		return co2e;
 	}
 
 	/**
@@ -154,45 +141,6 @@ public class Airplane implements Vessel {
 		final Quantity co2e = this.getCO2e(distance, payload, useRFI);
 		co2e.setAmount(co2e.getAmount() / distance.convert(Unit.KILOMETER).getAmount());
 		return co2e;
-	}
-
-	/**
-	 * Calculates the average payload (transported weight) in kilogram using standard capacity utilization factors for
-	 * freight and passengers
-	 * 
-	 * @param distance
-	 *            The distance traveled
-	 * @return The average payload in kilogram for flights over the given distance
-	 */
-	private double getTransportedWeight(final Quantity distance) {
-		final HaulDistance hd = this.getHaulDistance(distance);
-		final double freightWeight = this.specs.getMaxPayload() * freightCapacityUtilization.get(hd);
-		final double passengerWeight = this.specs.getSeats() * passengerCapacityUtilization.get(hd) * PASSENGER_WEIGHT;
-		return freightWeight + passengerWeight;
-	}
-
-	/**
-	 * Returns the HaulDistance (cluster of distances for freight transports) for a given distance
-	 * 
-	 * @param distance
-	 *            the real distance traveled
-	 * @return The HaulDistance which matches the real distance traveled
-	 */
-	private HaulDistance getHaulDistance(final Quantity distance) {
-		if (distance.getAmount() < 0) {
-			throw new IllegalArgumentException("Distance has to be bigger than 0, was " + distance);
-		}
-		
-		final Double calcDistance = distance.convert(Unit.KILOMETER).getAmount();
-
-		HaulDistance result = null;
-		for (final HaulDistance dist : HaulDistance.values()) {
-			if (dist.minDistance <= calcDistance && dist.maxDistance > calcDistance) {
-				result = dist;
-				break;
-			}
-		}
-		return result;
 	}
 
 	/**
@@ -250,6 +198,85 @@ public class Airplane implements Vessel {
 			}
 		}
 		return new QuantityImpl(result * numTrips, Unit.KILOGRAM);
+	}
+
+	/**
+	 * Calculates the complete CO2e emission for the whole flight
+	 * 
+	 * @param distance
+	 *            the distance traveled
+	 * @param useRFI
+	 *            true if the higher greenhouse potential for emission near the stratosphere should be used, false
+	 *            otherwise
+	 * @return The CO2e emission for the whole flight
+	 */
+	public Quantity getTotalCO2e(final Quantity distance, final boolean useRFI) {
+		// TODO check if flight distance should be adjusted in here or if this is done by caller
+		Double fuelConsumption = this.getFuelConsumption(distance).getAmount();
+		if (useRFI) {
+			// multiply with rfi factor
+			fuelConsumption *= RFICalculator.getRFIFactor(distance);
+		}
+		// multiply with kerosene factor
+		final double co2e = fuelConsumption * KEROSENE_FACTOR;
+		// return result
+		return new QuantityImpl(co2e, Unit.KG_CO2E);
+	}
+
+	/**
+	 * Calculates the CO2e emission per kilometer for a flight
+	 * 
+	 * @param distance
+	 *            The distance traveled
+	 * @param useRFI
+	 *            true if the higher greenhouse potential for emission near the stratosphere should be used, false
+	 *            otherwise
+	 * @return The CO2e emission per kilometer for the whole flight
+	 */
+	public Quantity getTotalCO2ePerKM(final Quantity distance, final boolean useRFI) {
+		final Double calcDistance = distance.convert(Unit.KILOMETER).getAmount();
+		final Quantity co2e = this.getTotalCO2e(distance, useRFI);
+		co2e.setAmount(co2e.getAmount() / calcDistance);
+		return co2e;
+	}
+
+	/**
+	 * Returns the HaulDistance (cluster of distances for freight transports) for a given distance
+	 * 
+	 * @param distance
+	 *            the real distance traveled
+	 * @return The HaulDistance which matches the real distance traveled
+	 */
+	private HaulDistance getHaulDistance(final Quantity distance) {
+		if (distance.getAmount() < 0) {
+			throw new IllegalArgumentException("Distance has to be bigger than 0, was " + distance);
+		}
+		
+		final Double calcDistance = distance.convert(Unit.KILOMETER).getAmount();
+
+		HaulDistance result = null;
+		for (final HaulDistance dist : HaulDistance.values()) {
+			if (dist.minDistance <= calcDistance && dist.maxDistance > calcDistance) {
+				result = dist;
+				break;
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * Calculates the average payload (transported weight) in kilogram using standard capacity utilization factors for
+	 * freight and passengers
+	 * 
+	 * @param distance
+	 *            The distance traveled
+	 * @return The average payload in kilogram for flights over the given distance
+	 */
+	private double getTransportedWeight(final Quantity distance) {
+		final HaulDistance hd = this.getHaulDistance(distance);
+		final double freightWeight = this.specs.getMaxPayload() * freightCapacityUtilization.get(hd);
+		final double passengerWeight = this.specs.getSeats() * passengerCapacityUtilization.get(hd) * PASSENGER_WEIGHT;
+		return freightWeight + passengerWeight;
 	}
 
 }

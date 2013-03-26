@@ -6,8 +6,18 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Specification of Airplanes as used by EcoTransIT for calculation of CO2E-emissions
+ * @author Sven Peetz
+ *
+ */
 public class AirplaneSpecification implements Vessel {
 
+	/**
+	 * Cluster of Airplane sizes
+	 * @author Sven Peetz
+	 *
+	 */
 	public enum AirplaneSize {
 		SMALL, MEDIUM, BIG;
 	}
@@ -36,14 +46,40 @@ public class AirplaneSpecification implements Vessel {
 
 		P_FOKKER100(AirplaneSize.SMALL, 1000, 3170, 85, Arrays.asList(1468d, 2079d, 3212d, 4286d, 5480d, 7796d, 10400d));
 
+		/**
+		 * Number of seats that may be used to transport passengers
+		 */
 		private int seats;
+		/**
+		 * The maximum distance this Airplane can travel with one flight
+		 */
 		private int maxRange;
+		/**
+		 * The maximum cargo payload this Airplane can load
+		 */
 		private int maxPayload;
+		/**
+		 * The {@link AirplaneSize} of this Airplane
+		 */
 		private AirplaneSize size;
+		/**
+		 * A fuel consumption profile holding distances in km as keys and according fuel consumptions in kg 
+		 */
 		private Map<Double, Double> consumptionProfile;
+		/**
+		 * Standard distances used to define fuel consumption as given by EcoTransIT
+		 */
 		private List<Double> consumptionDistances = Arrays.asList(232d, 463d, 926d, 1389d, 1852d, 2778d, 3704d, 4630d, 5556d,
 				6482d, 7408d, 8334d, 9260d, 10186d, 11112d, 12038d, 12964d, 13890d);
 
+		/**
+		 * Constructor of AirplaneModel
+		 * @param size The {@link AirplaneSize} of this AirplaneModel
+		 * @param maxPayload The maximum cargo payload of this AirplaneModel
+		 * @param maxRange The maximum distance this AirplaneModel can travel in one flight
+		 * @param seats The number of seats for passengers transport of this AirplaneModel
+		 * @param consumption The consumption profile with distances in km as key and fuel consumptions in kg as value
+		 */
 		private StandardModel(AirplaneSize size, int maxPayload, int maxRange, int seats, List<Double> consumption) {
 			this.seats = seats;
 			this.maxRange = maxRange;

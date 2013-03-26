@@ -24,10 +24,18 @@ public class Truck implements Vessel {
 	 */
 	private TruckSpecification specs;
 
+	/**
+	 * Constructor taking a {@link TruckModel} to setup the specification
+	 * @param model The TruckModel specifying this Truck
+	 */
 	public Truck(TruckModel model) {
 		this(new TruckSpecification(model));
 	}
 
+	/**
+	 * Constructor taking {@link TruckSpecification} to setup the specification
+	 * @param specs The {@link TruckSpecification} specifying this Truck
+	 */
 	public Truck(TruckSpecification specs) {
 		this.specs = specs;
 	}
