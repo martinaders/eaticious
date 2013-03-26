@@ -20,7 +20,9 @@ public class SeasonImpl implements Season {
 	 * The default year this will be working with
 	 */
 	private static final int referenceYear = 2001;
-	
+	/**
+	 * The reference date used by this SeasonImpl
+	 */
 	private static final GregorianCalendar refCal = new GregorianCalendar(referenceYear, Calendar.JANUARY, 1, 0, 0, 0);
 	/**
 	 * The start of this Season
@@ -153,7 +155,7 @@ public class SeasonImpl implements Season {
 	@Override
 	public void setEnd(int month) {
 		GregorianCalendar end = new GregorianCalendar(referenceYear, month, 1);
-		end.set(Calendar.DATE, end.getActualMaximum(Calendar.DATE)); // TODO test if max gives right value
+		end.set(Calendar.DATE, end.getActualMaximum(Calendar.DATE));
 		this.setEnd(end);
 	}
 
