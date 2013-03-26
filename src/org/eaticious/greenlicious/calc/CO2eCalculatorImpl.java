@@ -8,7 +8,6 @@ import org.eaticious.common.QuantityImpl;
 import org.eaticious.common.Recipe;
 import org.eaticious.common.Region;
 import org.eaticious.common.Unit;
-import org.eaticious.greenlicious.CO2ePrint;
 import org.eaticious.greenlicious.CoolingType;
 import org.eaticious.greenlicious.Shoppinglist;
 import org.eaticious.greenlicious.vessels.Vessel;
@@ -18,72 +17,72 @@ public class CO2eCalculatorImpl implements CO2eCalculator {
 
 
 	@Override
-	public CO2ePrint getTransportValue(final FoodProduct product, final Region consumerRegion) {
+	public Quantity getTransportValue(final FoodProduct product, final Region consumerRegion) {
 		return this.getTransportValue(product, consumerRegion, new QuantityImpl(
 				1.0, Unit.KILOGRAM));
 	}
 
 	@Override
-	public CO2ePrint getTransportValue(FoodProduct product, Region consumerRegion, Quantity amount) {
+	public Quantity getTransportValue(FoodProduct product, Region consumerRegion, Quantity amount) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public CO2ePrint getTransportValue(FoodProduct product, Vessel vessel,
+	public Quantity getTransportValue(FoodProduct product, Vessel vessel,
 			Integer distance) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public CO2ePrint getTransportValue(FoodProduct product, Vessel vessel,
+	public Quantity getTransportValue(FoodProduct product, Vessel vessel,
 			Integer distance, Quantity amount) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public CO2ePrint getCoolingValue(FoodProduct product, CoolingType type) {
+	public Quantity getCoolingValue(FoodProduct product, CoolingType type) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public CO2ePrint getShoppingValue(Shoppinglist list, Vessel vessel) {
+	public Quantity getShoppingValue(Shoppinglist list, Vessel vessel) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public CO2ePrint getCookingValue(Recipe recipe, Region consumerRegion,
+	public Quantity getCookingValue(Recipe recipe, Region consumerRegion,
 			Date date) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public CO2ePrint getRecipeValue(Recipe recipe, Region userRegion, Date date) {
+	public Quantity getRecipeValue(Recipe recipe, Region userRegion, Date date) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public CO2ePrint getRecipeValue(Recipe recipe, Region userRegion,
+	public Quantity getRecipeValue(Recipe recipe, Region userRegion,
 			Date date, Integer servings) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public CO2ePrint getFoodProductionValue(FoodProduct product,
+	public Quantity getFoodProductionValue(FoodProduct product,
 			Region producer, Date date) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public CO2ePrint getFoodProductionValue(FoodProduct product,
+	public Quantity getFoodProductionValue(FoodProduct product,
 			Region producer, Date date, Quantity amount) {
 		// TODO Auto-generated method stub
 		return null;
