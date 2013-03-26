@@ -62,7 +62,7 @@ public class SeasonImpl implements Season {
 	 * @param till the second date
 	 * @return The time in milliseconds between the two dates, negative values may be returned
 	 */
-	private Long getDaysBetween(Calendar from, Calendar till) {
+	private Long getTimeBetween(Calendar from, Calendar till) {
 		return (till.getTimeInMillis() - from.getTimeInMillis()); 
 	}
 
@@ -79,11 +79,11 @@ public class SeasonImpl implements Season {
 		begin.set(Calendar.SECOND, 0);
 		begin.set(Calendar.MILLISECOND, 0);
 		// add difference from newBegin and old begin to duration
-		Long durationDiff = this.getDaysBetween(this.begin, begin);
+		Long durationDiff = this.getTimeBetween(this.begin, begin);
 		this.duration += durationDiff;
 		this.begin = begin;
 		// set offset of begin date
-		this.offset = this.getDaysBetween(refCal, this.begin);
+		this.offset = this.getTimeBetween(refCal, this.begin);
 	}
 
 	@Override
@@ -129,7 +129,7 @@ public class SeasonImpl implements Season {
 		if (end.before(this.begin)) {
 			end.set(Calendar.YEAR, referenceYear + 1);
 		}
-		this.duration = this.getDaysBetween(this.begin, end);
+		this.duration = this.getTimeBetween(this.begin, end);
 
 	}
 
@@ -183,7 +183,7 @@ public class SeasonImpl implements Season {
 		// faking the begin of this Season is 1st of January and adapting the compared date to this
 		// this is done to avoid complexity when end of season is in the next year
 		cal.add(Calendar.SECOND, -(int)(this.offset / 1000));
-		Long comparedOffset = this.getDaysBetween(refCal, cal);
+		Long comparedOffset = this.getTimeBetween(refCal, cal);
 		return comparedOffset >= 0 && comparedOffset <= this.duration;
 	}
 
