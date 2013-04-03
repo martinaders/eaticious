@@ -54,7 +54,7 @@ public interface Region extends Serializable {
 	 * 
 	 * @return The EmissionFactor (to be multiplied with kWh in order to calculate CO2e)
 	 */
-	EmissionFactor getEnergyMixFactor();
+	EmissionFactor getEmissionFactor();
 
 	/**
 	 * @return TransportationDetails for this region needed to calculate the correct CO2e values regarding

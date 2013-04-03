@@ -50,7 +50,7 @@ public interface FoodProduct extends Serializable {
 
 	/**
 	 * 
-	 * @return A Map holding amounts of nutrients per serving of the associated recipe
+	 * @return A Map holding amounts of nutrients 
 	 */
 	Map<Nutrient, Quantity> getNutritionData();
 
@@ -119,7 +119,7 @@ public interface FoodProduct extends Serializable {
 
 	/**
 	 * 
-	 * @return
+	 * @return A List of all the Synonyms in the standard locale. Later argument for locale to be added.
 	 */
 	List<String> getSynonyms();
 
