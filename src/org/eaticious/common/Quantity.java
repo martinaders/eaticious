@@ -35,4 +35,8 @@ public interface Quantity extends Serializable {
 	 */
 	Quantity convert(Unit unit) throws IllegalArgumentException;
 
+	void add(Quantity co2eForRoute);
+
+	void substract(Quantity co2eForRoute);
+
 }

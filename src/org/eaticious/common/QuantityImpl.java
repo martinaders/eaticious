@@ -61,4 +61,16 @@ public class QuantityImpl implements Quantity {
 		return result;
 	}
 
+	@Override
+	public void add(Quantity add) {
+		this.setAmount(this.getAmount() + add.convert(this.getUnit()).getAmount());
+		
+	}
+
+	@Override
+	public void substract(Quantity sub) {
+		this.setAmount(this.getAmount() - sub.convert(this.getUnit()).getAmount());
+		
+	}
+
 }
