@@ -1,6 +1,7 @@
 package org.eaticious.eaternity;
 
-import org.eaticious.common.*;
+import org.eaticious.common.Quantity;
+import org.eaticious.common.co2e.transport.*;
 
 
 //co2 equivalent in g, splitted up by all the different quotas/factors

@@ -2,7 +2,11 @@ package org.eaticious.eaternity;
 
 import java.util.Map;
 
-import org.eaticious.common.*;
+import org.eaticious.common.Nutrient;
+import org.eaticious.common.Quantity;
+import org.eaticious.common.Region;
+import org.eaticious.common.Season;
+import org.eaticious.common.co2e.transport.*;
 
 
 public interface IngredientSpecification {
