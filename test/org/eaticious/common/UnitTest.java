@@ -2,6 +2,8 @@ package org.eaticious.common;
 
 import static org.junit.Assert.*;
 
+import org.eaticious.common.PhysicalDimension;
+import org.eaticious.common.Unit;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
