@@ -1,4 +1,4 @@
-package org.eaticious.greenlicious;
+package org.eaticious.common;
 
 import static org.junit.Assert.*;
 
@@ -8,6 +8,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import org.eaticious.common.Season;
+import org.eaticious.common.SeasonImpl;
 import org.eaticious.common.SeasonType;
 import org.junit.After;
 import org.junit.AfterClass;
