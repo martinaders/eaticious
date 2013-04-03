@@ -6,9 +6,9 @@ import org.eaticious.common.FoodProduct;
 import org.eaticious.common.Quantity;
 import org.eaticious.common.Recipe;
 import org.eaticious.common.Region;
+import org.eaticious.common.co2e.transport.Vessel;
 import org.eaticious.greenlicious.CoolingType;
 import org.eaticious.greenlicious.Shoppinglist;
-import org.eaticious.greenlicious.vessels.Vessel;
 
 
 public interface CO2eCalculator {
@@ -17,13 +17,7 @@ public interface CO2eCalculator {
 	
 	Quantity getFoodProductionValue(FoodProduct product, Region producer, Date date, Quantity amount);
 	
-	Quantity getTransportValue(FoodProduct product, Region consumerRegion);
-	
 	Quantity getTransportValue(FoodProduct product, Region consumerRegion, Quantity amount);
-	
-	Quantity getTransportValue(FoodProduct product, Vessel vessel, Integer distance);
-	
-	Quantity getTransportValue(FoodProduct product, Vessel vessel, Integer distance, Quantity amount);
 	
 	Quantity getCoolingValue(FoodProduct product, CoolingType type);
 	
