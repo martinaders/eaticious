@@ -1,4 +1,4 @@
-package org.eaticious.greenlicious.vessels;
+package org.eaticious.common.co2e.transport;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,8 +9,8 @@ import java.util.Map;
 import org.eaticious.common.Quantity;
 import org.eaticious.common.QuantityImpl;
 import org.eaticious.common.Unit;
-import org.eaticious.greenlicious.calc.RFICalculator;
-import org.eaticious.greenlicious.vessels.AirplaneSpecification.StandardModel;
+import org.eaticious.common.co2e.RFICalculator;
+import org.eaticious.common.co2e.transport.AirplaneSpecification.StandardModel;
 /**
  * This represents Airplanes as used by EcoTransIT for calculation of CO2E-emissions.
  * @author Sven Peetz

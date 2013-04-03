@@ -1,4 +1,4 @@
-package org.eaticious.greenlicious.calc;
+package org.eaticious.common.co2e;
 
 import java.util.Map;
 import java.util.TreeMap;

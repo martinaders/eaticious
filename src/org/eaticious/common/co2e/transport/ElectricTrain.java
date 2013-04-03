@@ -1,15 +1,15 @@
-package org.eaticious.greenlicious.vessels;
+package org.eaticious.common.co2e.transport;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.eaticious.common.FoodProduct.TransportClass;
 import org.eaticious.common.RegionSpecification.Landscape;
+import org.eaticious.common.co2e.transport.ElectricTrainSpecification.TrainModel;
 import org.eaticious.common.PhysicalDimension;
 import org.eaticious.common.Quantity;
 import org.eaticious.common.QuantityImpl;
 import org.eaticious.common.Unit;
-import org.eaticious.greenlicious.vessels.ElectricTrainSpecification.TrainModel;
 
 public class ElectricTrain implements Vessel {
 	/**

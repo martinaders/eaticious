@@ -1,4 +1,4 @@
-package org.eaticious.greenlicious.vessels;
+package org.eaticious.common.co2e.transport;
 
 import java.util.Arrays;
 import java.util.HashMap;
