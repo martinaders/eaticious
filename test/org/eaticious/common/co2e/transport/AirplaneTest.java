@@ -1,4 +1,4 @@
-package org.eaticious.greenlicious.vessels;
+package org.eaticious.common.co2e.transport;
 
 import static org.junit.Assert.*;
 
@@ -8,8 +8,10 @@ import java.util.Map;
 import org.eaticious.common.Quantity;
 import org.eaticious.common.QuantityImpl;
 import org.eaticious.common.Unit;
-import org.eaticious.greenlicious.vessels.AirplaneSpecification.AirplaneSize;
-import org.eaticious.greenlicious.vessels.AirplaneSpecification.StandardModel;
+import org.eaticious.common.co2e.transport.Airplane;
+import org.eaticious.common.co2e.transport.AirplaneSpecification;
+import org.eaticious.common.co2e.transport.AirplaneSpecification.AirplaneSize;
+import org.eaticious.common.co2e.transport.AirplaneSpecification.StandardModel;
 import org.junit.BeforeClass;
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package org.eaticious.greenlicious.vessels;
+package org.eaticious.common.co2e.transport;
 
 import static org.junit.Assert.*;
 
@@ -9,7 +9,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import org.eaticious.common.FoodProduct.TransportClass;
-import org.eaticious.greenlicious.vessels.CargoShip.ShippingRoute;
+import org.eaticious.common.co2e.transport.CargoShip;
+import org.eaticious.common.co2e.transport.CargoShip.ShippingRoute;
 
 public class CargoShipTest {
 	

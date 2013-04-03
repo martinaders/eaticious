@@ -1,11 +1,12 @@
-package org.eaticious.greenlicious.vessels;
+package org.eaticious.common.co2e.transport;
 
 import static org.junit.Assert.*;
 
 import java.util.HashMap;
 
-import org.eaticious.greenlicious.vessels.AirplaneSpecification.AirplaneSize;
-import org.eaticious.greenlicious.vessels.AirplaneSpecification.StandardModel;
+import org.eaticious.common.co2e.transport.AirplaneSpecification;
+import org.eaticious.common.co2e.transport.AirplaneSpecification.AirplaneSize;
+import org.eaticious.common.co2e.transport.AirplaneSpecification.StandardModel;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,10 +1,11 @@
-package org.eaticious.greenlicious.calc;
+package org.eaticious.common.co2e;
 
 import static org.junit.Assert.*;
 
 import org.eaticious.common.Quantity;
 import org.eaticious.common.QuantityImpl;
 import org.eaticious.common.Unit;
+import org.eaticious.common.co2e.RFICalculator;
 import org.junit.Before;
 import org.junit.Test;
 

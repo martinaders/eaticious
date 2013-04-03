@@ -1,11 +1,12 @@
-package org.eaticious.greenlicious.vessels;
+package org.eaticious.common.co2e.transport;
 
 import static org.junit.Assert.*;
 
 import org.eaticious.common.Quantity;
 import org.eaticious.common.QuantityImpl;
 import org.eaticious.common.Unit;
-import org.eaticious.greenlicious.vessels.TruckSpecification.TruckModel;
+import org.eaticious.common.co2e.transport.Truck;
+import org.eaticious.common.co2e.transport.TruckSpecification.TruckModel;
 import org.junit.BeforeClass;
 import org.junit.Test;
 

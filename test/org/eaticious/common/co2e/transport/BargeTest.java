@@ -1,4 +1,4 @@
-package org.eaticious.greenlicious.vessels;
+package org.eaticious.common.co2e.transport;
 
 import static org.junit.Assert.*;
 
@@ -6,7 +6,8 @@ import org.eaticious.common.FoodProduct;
 import org.eaticious.common.Quantity;
 import org.eaticious.common.QuantityImpl;
 import org.eaticious.common.Unit;
-import org.eaticious.greenlicious.vessels.BargeSpecification.BargeModel;
+import org.eaticious.common.co2e.transport.Barge;
+import org.eaticious.common.co2e.transport.BargeSpecification.BargeModel;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
