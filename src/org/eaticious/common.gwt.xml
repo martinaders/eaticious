@@ -1,5 +1,6 @@
 <!-- This is eaternity specific, needed for propper external project integration into a GWT project -->
 
 <module>
+  <inherits name='com.google.gwt.user.User'/>
   <source path="common"></source>
 </module> 
