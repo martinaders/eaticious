@@ -32,7 +32,7 @@ public interface Region extends Serializable {
 	 *            The language in which the name of the Region should be returned
 	 * @return A String holding the name of the Region or null
 	 */
-	String getName(Locale language);
+	String getName(Language language);
 
 	/**
 	 * This returns the parent Region of this Region or null if the parent is not known or the current region is WORLD

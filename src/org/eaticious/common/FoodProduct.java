@@ -41,7 +41,7 @@ public interface FoodProduct extends Serializable {
 	 *            Locale holding the requested language
 	 * @return A String representing this FoodProduct or null
 	 */
-	String getName(Locale locale);
+	String getName(Language language);
 
 	/**
 	 * @return The code of this product in the requested product classification or null if unknown

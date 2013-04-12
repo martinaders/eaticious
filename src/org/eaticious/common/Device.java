@@ -10,13 +10,13 @@ public interface Device {
 	 * @param language
 	 * @return name of the device in the locale language
 	 */
-	String getName(Locale locale);
+	String getName(Language language);
 	
 	/**
 	 * 
 	 * @return The subtype of the device, e.g. small or big Microwave
 	 */
-	String getSpecification(Locale locale);
+	String getSpecification(Language language);
 	
 	/**
 	 * 

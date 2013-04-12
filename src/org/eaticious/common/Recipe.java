@@ -13,14 +13,14 @@ public interface Recipe {
 	 * @param language
 	 * @return The name of this Recipe
 	 */
-	String getTitel(Locale language);
+	String getTitel(Language language);
 	
 	/**
 	 * 
 	 * @param language
 	 * @return The accompanying phrase of this Recipe
 	 */
-	String getSubTitel(Locale language);
+	String getSubTitel(Language language);
 
 	
 	Integer getStdServingSize();
@@ -42,7 +42,7 @@ public interface Recipe {
 	 * @param language
 	 * @return The cooking instructions for this recipe
 	 */
-	String getInstructions(Locale language);
+	String getInstructions(Language language);
 	
 	/**
 	 * 

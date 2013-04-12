@@ -7,7 +7,7 @@ public interface Nutrient extends Serializable {
 	
 	String getName();
 	
-	String getName(Locale language);
+	String getName(Language language);
 	
 	Quantity getRecommendedDailyConsumption();
 
