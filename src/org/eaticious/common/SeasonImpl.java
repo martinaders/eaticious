@@ -51,6 +51,16 @@ public class SeasonImpl implements Season {
 		this.duration = 0L;
 		this.offset = 0L;
 	}
+	
+	/**
+	 * Copy Constructor
+	 */
+	public SeasonImpl(SeasonImpl other) {
+		this.begin = (GregorianCalendar) other.begin.clone();
+		this.duration = new Long(other.duration);
+		this.offset = new Long(other.offset);
+		this.type = other.type;
+	}
 
 	@Override
 	public GregorianCalendar getBeginning() {
