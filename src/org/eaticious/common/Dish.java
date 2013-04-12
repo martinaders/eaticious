@@ -13,7 +13,7 @@ public interface Dish extends Serializable {
 	
 	Quantity getCO2eValue();
 	
-	User getUser();
+	UserInfo getUser();
 	
 	Long getKitchenId();
 }

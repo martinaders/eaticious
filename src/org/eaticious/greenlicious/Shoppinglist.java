@@ -6,7 +6,7 @@ import java.util.Map;
 import org.eaticious.common.Dish;
 import org.eaticious.common.FoodProduct;
 import org.eaticious.common.Quantity;
-import org.eaticious.common.User;
+import org.eaticious.common.UserInfo;
 
 public interface Shoppinglist {
 	
@@ -26,8 +26,8 @@ public interface Shoppinglist {
 	
 	void setStatus (FoodProduct product);
 	
-	User getUser();
+	UserInfo getUser();
 	
-	void setUser(User user);
+	void setUser(UserInfo user);
 
 }
