@@ -1,16 +1,25 @@
 package org.eaticious.common;
 
+import java.io.Serializable;
+
 public class QuantityImpl implements Quantity {
 	
 	private static final long serialVersionUID = -2234968030318875678L;
-	
-	private Unit unit;
+	// APPROVE changed to final because unit should not be changed anymore
+	private final Unit unit;
 	private Double amount;
 	
 	/**
 	 * Empty Constructor needed for objectify
 	 */
-	public QuantityImpl() { /* needed for objectify */ }
+	private QuantityImpl() { /* needed for objectify */ 
+		unit = Unit.NONE;
+	}
+	
+	// APPROVE convenience method for setting the unit of a quantity without giving it an amount
+	public QuantityImpl(final Unit unit) {
+		this.unit = unit;
+	}
 	
 	public QuantityImpl(final Double amount, final Unit unit){
 		this.unit = unit;
@@ -42,11 +51,6 @@ public class QuantityImpl implements Quantity {
 	@Override
 	public void setAmount(final double amount) {
 		this.amount = amount;
-	}
-
-	@Override
-	public void setUnit(final Unit unit) {
-		this.unit = unit;
 	}
 	
 	@Override

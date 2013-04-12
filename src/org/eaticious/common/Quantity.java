@@ -21,12 +21,6 @@ public interface Quantity extends Serializable {
 	 * @return the unit used
 	 */
 	Unit getUnit();
-	
-	/**
-	 * 
-	 * @param unit the numeric amount
-	 */
-	void setUnit(Unit unit);
 
 	/**
 	 * 
