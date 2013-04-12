@@ -40,7 +40,8 @@ public class Barge implements Vessel {
 	 * @return The CO2E emission in kg per kgkm when transporting a good of {@link TransportClass} tc with this BargeSpecification
 	 */
 	public Quantity getCO2ePerKGKM(TransportClass tc, boolean useEcoTransitCorrection) {
-		Quantity result = new QuantityImpl(Unit.KG_CO2E);
+		Quantity result = new QuantityImpl();
+		result.setUnit(Unit.KG_CO2E);
 		Double co2e = useEcoTransitCorrection ? this.specs.getCO2eMap().get(tc) * this.specs.getEcotransitFactor() : this.specs.getCO2eMap().get(tc);
 		result.setAmount(co2e);
 		return result;
