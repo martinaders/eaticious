@@ -15,6 +15,8 @@ import java.util.GregorianCalendar;
  */
 public class SeasonImpl implements Season {
 
+	private static final long serialVersionUID = -2223462345733478L;
+	
 	/**
 	 * The default year this will be working with
 	 */

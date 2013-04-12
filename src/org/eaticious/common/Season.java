@@ -1,5 +1,6 @@
 package org.eaticious.common;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -13,7 +14,7 @@ import java.util.GregorianCalendar;
  * @author Sven Peetz
  *
  */
-public interface Season {
+public interface Season extends Serializable {
 	
 	/**
 	 * Returns the start of the Season
