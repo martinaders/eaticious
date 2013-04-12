@@ -122,9 +122,9 @@ public class RFICalculatorTest {
 	
 	@Test (expected = IllegalArgumentException.class)
 	public void testWrongUnit() {
-		distance.setAmount(10d);
-		distance.setUnit(Unit.CO2);
-		RFICalculator.getRFIFactor(distance);
+		Quantity distanceWrong = new QuantityImpl(Unit.CO2);
+		distanceWrong.setAmount(10d);
+		RFICalculator.getRFIFactor(distanceWrong);
 	}
 
 }

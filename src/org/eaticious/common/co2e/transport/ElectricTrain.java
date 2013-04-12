@@ -69,8 +69,7 @@ public class ElectricTrain implements Vessel {
 	 *         {@link Landscape}
 	 */
 	public Quantity getFuelConsumptionPerKGKM(final Landscape landscape, final TransportClass tc) {
-		final Quantity result = new QuantityImpl();
-		result.setUnit(Unit.KILOWATTHOUR);
+		final Quantity result = new QuantityImpl(Unit.KILOWATTHOUR);
 
 		final double lsFactor = getLandscapeFactor(landscape);
 		final double tcFactor = getTransportClassFactor(tc);

@@ -59,12 +59,6 @@ public class QuantityImplTest {
 		assertEquals(first.getAmount(), new Double(100d));
 	}
 
-	@Test
-	public void testSetUnit() {
-		Quantity first = new QuantityImpl(1d, Unit.KILOGRAM);
-		first.setUnit(Unit.BARREL);
-		assertEquals(first.getUnit(), Unit.BARREL);
-	}
 
 	@Test
 	public void testEqualsObjectTrue() {
