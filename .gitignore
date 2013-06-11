@@ -6,3 +6,5 @@
 /.pmd
 .classpath
 /war/WEB-INF/web.xml
+.gwtup.jar
+.ivy.jar
