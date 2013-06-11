@@ -75,7 +75,8 @@
     <delete dir="gwt-unitCache" failonerror="false" />
     <delete dir="war/WEB-INF/lib" failonerror="false" />
     <delete dir="war/WEB-INF/deploy" failonerror="false" />
-    <delete dir="war/gwtest" failonerror="false" />
+    <delete dir="war/org.eaticious.common" failonerror="false" />
+    <delete file="eaticious-common-${version}.jar" failonerror="false" />
   </target>
 
 </project>
