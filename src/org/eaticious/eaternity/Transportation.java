@@ -2,15 +2,13 @@ package org.eaticious.eaternity;
 
 import java.io.Serializable;
 
-import javax.persistence.Id;
-
 public class Transportation implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -5971128872903171922L;
-	@Id Long id;
+	Long id;
     public String symbol;
 	public Double factor;
     

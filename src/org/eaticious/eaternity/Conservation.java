@@ -2,15 +2,13 @@ package org.eaticious.eaternity;
 
 import java.io.Serializable;
 
-import javax.persistence.Id;
-
 public class Conservation implements Serializable, Cloneable{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -6977365500555091257L;
-	@Id Long id;
+	Long id;
 	public String symbol;
 	public Double factor;
 	
