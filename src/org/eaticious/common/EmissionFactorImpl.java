@@ -14,7 +14,7 @@ public class EmissionFactorImpl implements EmissionFactor {
 	private String name;
 	@Unindex
 	private Double factor;
-	@Embed
+
 	private Unit referencedUnit;
 	
 	public EmissionFactorImpl(){
